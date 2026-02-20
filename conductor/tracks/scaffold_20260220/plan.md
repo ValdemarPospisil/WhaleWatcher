@@ -20,13 +20,13 @@
     - [x] Instantiate a minimal `MainActivity` with a programmatic `TextView` for verification.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Project Infrastructure & Scaffolding' (Protocol in workflow.md)
 
-## Phase 2: Dependency Injection & Data Layer (Skeleton)
-- [ ] Task: Initialize Hilt DI Module (Skeleton)
-    - [ ] Create `WhaleWatcherApp` class extending `Application` with `@HiltAndroidApp`.
-    - [ ] Create a basic `NetworkModule` and `DatabaseModule` (skeletons).
-- [ ] Task: Initialize Room Database (Skeleton)
-    - [ ] Create the `AppDatabase` class and an initial placeholder entity/DAO if needed for the POC.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Dependency Injection & Data Layer (Skeleton)' (Protocol in workflow.md)
+## Phase 2: Dependency Injection & Data Layer (Skeleton) [checkpoint: 59d3002]
+- [x] Task: Initialize Hilt DI Module (Skeleton) bc63515
+    - [x] Create `WhaleWatcherApp` class extending `Application` with `@HiltAndroidApp`.
+    - [x] Create a basic `NetworkModule` and `DatabaseModule` (skeletons).
+- [x] Task: Initialize Room Database (Skeleton) 8ac9d5f
+    - [x] Create the `AppDatabase` class and an initial placeholder entity/DAO if needed for the POC.
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Dependency Injection & Data Layer (Skeleton)' (Protocol in workflow.md)
 
 ## Phase 3: CI/CD & Static Analysis
 - [ ] Task: Configure GitHub Actions CI Workflow
