@@ -28,11 +28,11 @@
     - [x] Create the `AppDatabase` class and an initial placeholder entity/DAO if needed for the POC.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Dependency Injection & Data Layer (Skeleton)' (Protocol in workflow.md)
 
-## Phase 3: CI/CD & Static Analysis
-- [ ] Task: Configure GitHub Actions CI Workflow
-    - [ ] Create `.github/workflows/ci.yml` for automated builds and tests.
-    - [ ] Ensure it runs on push and pull requests to `main`.
-- [ ] Task: Setup Static Analysis (Ktlint)
-    - [ ] Integrate Ktlint via Gradle to ensure code style compliance.
-    - [ ] Run a baseline check to verify setup.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: CI/CD & Static Analysis' (Protocol in workflow.md)
+## Phase 3: CI/CD & Static Analysis [checkpoint: c8c41f7]
+- [x] Task: Configure GitHub Actions CI Workflow 05d4cd0
+    - [x] Create `.github/workflows/ci.yml` for automated builds and tests.
+    - [x] Ensure it runs on push and pull requests to `main`.
+- [x] Task: Setup Static Analysis (Ktlint) e9b22e2
+    - [x] Integrate Ktlint via Gradle to ensure code style compliance.
+    - [x] Run a baseline check to verify setup.
+- [x] Task: Conductor - User Manual Verification 'Phase 3: CI/CD & Static Analysis' (Protocol in workflow.md)
