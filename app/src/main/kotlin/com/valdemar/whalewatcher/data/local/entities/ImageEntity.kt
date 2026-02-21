@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class ImageEntity(
     @PrimaryKey val id: String,
     val name: String,
-    val namespace: String
+    val namespace: String,
 )
