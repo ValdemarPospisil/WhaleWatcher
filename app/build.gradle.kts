@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.okhttp.logging)
     
     // Coroutines
-    implementation(libs.kotlinx.coroutines-android)
+    implementation(libs.kotlinx.coroutines.android)
     
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
