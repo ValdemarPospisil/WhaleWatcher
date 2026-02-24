@@ -10,7 +10,7 @@ graph TD
     B --> C{Select a category};
     C --> D[Fetch repositories for category];
     D --> E{Select a repository};
-e --> F[Fetch tags for repository];
+    E --> F[Fetch tags for repository];
     F --> G[Display tags];
     G --> A;
 ```
