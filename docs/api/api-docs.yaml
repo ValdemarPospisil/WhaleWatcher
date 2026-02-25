@@ -1080,7 +1080,7 @@ paths:
           $ref: "#/components/responses/get_tag"
         "403":
           $ref: "#/components/responses/Forbidden"
-        "404":
+        "404": 
           $ref: "#/components/responses/NotFound"
     head:
       summary: Check repository tag
