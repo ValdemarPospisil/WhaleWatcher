@@ -16,7 +16,7 @@
 - [x] Task: Implement ViewModel 3295653
     - [ ] Sub-task: Write failing tests: Verify `MainViewModel` state transitions (Loading, Success with image name, Error with message) upon triggering a fetch.
     - [ ] Sub-task: Implement: Create `MainViewModel` utilizing Kotlin Coroutines and Flow/LiveData to expose UI state.
-- [ ] Task: Update UI Layout & Wire to ViewModel
+- [~] Task: Update UI Layout - [ ] Task: Update UI Layout & Wire to ViewModel Wire to ViewModel
     - [ ] Sub-task: Write failing tests: UI tests (e.g., using Robolectric or Espresso) to verify the Button click triggers a state change and updates the TextView, including error display.
     - [ ] Sub-task: Implement: Add a Button and a TextView to the main UI. Wire the button to the ViewModel's fetch method and observe the state to update the text and handle errors (logging and display).
 - [ ] Task: Conductor - User Manual Verification 'UI Implementation' (Protocol in workflow.md)
