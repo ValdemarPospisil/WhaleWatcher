@@ -1,6 +1,6 @@
 # Implementation Plan: API Proof of Concept
 
-## Phase 1: Setup Network Data Layer
+## Phase 1: Setup Network Data Layer [checkpoint: f2cc446]
 - [x] Task: Define API Data Models 2a1e6c9
     - [ ] Sub-task: Write failing tests: Parse sample JSON response into expected data objects.
     - [ ] Sub-task: Implement: Create `DockerRepositoryResponse` and related data classes with `@Serializable` annotations.
@@ -10,7 +10,7 @@
 - [x] Task: Implement Network Repository 7596231
     - [ ] Sub-task: Write failing tests: Mock the API interface and test the repository's success and error flow (e.g., returning a Kotlin `Result` or custom domain state).
     - [ ] Sub-task: Implement: Create a `DockerImageRepository` class that delegates to the API interface.
-- [ ] Task: Conductor - User Manual Verification 'Setup Network Data Layer' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Setup Network Data Layer' (Protocol in workflow.md) f2cc446
 
 ## Phase 2: UI Implementation
 - [ ] Task: Implement ViewModel
