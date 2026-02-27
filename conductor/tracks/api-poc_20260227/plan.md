@@ -7,7 +7,7 @@
 - [x] Task: Define Retrofit API Interface 75f20f0
     - [ ] Sub-task: Write failing tests: Use MockWebServer to verify the request path (`/v2/namespaces/{namespace}/repositories`) and mock responses.
     - [ ] Sub-task: Implement: Define `DockerHubApi` interface with a `GET` method for the endpoint.
-- [ ] Task: Implement Network Repository
+- [x] Task: Implement Network Repository 7596231
     - [ ] Sub-task: Write failing tests: Mock the API interface and test the repository's success and error flow (e.g., returning a Kotlin `Result` or custom domain state).
     - [ ] Sub-task: Implement: Create a `DockerImageRepository` class that delegates to the API interface.
 - [ ] Task: Conductor - User Manual Verification 'Setup Network Data Layer' (Protocol in workflow.md)
