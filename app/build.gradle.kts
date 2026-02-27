@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("plugin.serialization") version "1.9.22"
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint)
@@ -54,6 +55,7 @@ dependencies {
     // Networking
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.json)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
 
