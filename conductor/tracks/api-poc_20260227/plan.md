@@ -13,7 +13,7 @@
 - [x] Task: Conductor - User Manual Verification 'Setup Network Data Layer' (Protocol in workflow.md) f2cc446
 
 ## Phase 2: UI Implementation
-- [ ] Task: Implement ViewModel
+- [x] Task: Implement ViewModel 3295653
     - [ ] Sub-task: Write failing tests: Verify `MainViewModel` state transitions (Loading, Success with image name, Error with message) upon triggering a fetch.
     - [ ] Sub-task: Implement: Create `MainViewModel` utilizing Kotlin Coroutines and Flow/LiveData to expose UI state.
 - [ ] Task: Update UI Layout & Wire to ViewModel
