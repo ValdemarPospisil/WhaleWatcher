@@ -4,7 +4,7 @@
 - [x] Task: Define API Data Models 2a1e6c9
     - [ ] Sub-task: Write failing tests: Parse sample JSON response into expected data objects.
     - [ ] Sub-task: Implement: Create `DockerRepositoryResponse` and related data classes with `@Serializable` annotations.
-- [ ] Task: Define Retrofit API Interface
+- [x] Task: Define Retrofit API Interface 75f20f0
     - [ ] Sub-task: Write failing tests: Use MockWebServer to verify the request path (`/v2/namespaces/{namespace}/repositories`) and mock responses.
     - [ ] Sub-task: Implement: Define `DockerHubApi` interface with a `GET` method for the endpoint.
 - [ ] Task: Implement Network Repository
