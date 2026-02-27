@@ -1,0 +1,8 @@
+{
+  "track_id": "api-poc_20260227",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-27T09:57:50.653747Z",
+  "updated_at": "2026-02-27T09:57:50.653923Z",
+  "description": "I would like to implement first API to try it, some POC. the api points i want to use are documented in @docs/api/README.md . It can be simple button that calls the API and shows the results in some format, it can just show the name of the image. Ask anything"
+}
