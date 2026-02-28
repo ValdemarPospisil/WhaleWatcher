@@ -8,12 +8,12 @@
     - [x] Inject Primary and Secondary Screen details.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Update Product Definition Context' (Protocol in workflow.md)
 
-## Phase 2: Root README Update
+## Phase 2: Root README Update [checkpoint: f47e01c]
 - [x] Task: Revise `README.md` [db00f1c]
     - [x] Write app description emphasizing Docker Hub browser and list manager features.
     - [x] Document project build instructions and useful gradle commands.
     - [x] Document repository file structure.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Root README Update' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Root README Update' (Protocol in workflow.md)
 
 ## Phase 3: Design Documentation Generation
 - [ ] Task: Create `docs/design/overview.md`
