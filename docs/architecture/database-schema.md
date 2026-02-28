@@ -3,7 +3,34 @@
 ## Overview
 WhaleWatcher uses a local Room database to store user collections and predefined system categories. To respect Docker Hub's API rate limits and provide a fast, responsive user experience, the application operates with an offline-first approach for its core list-rendering functionality.
 
-<!-- ER_DIAGRAM_PLACEHOLDER -->
+## ER Diagram
+
+```mermaid
+erDiagram
+    List {
+        int id PK "Auto-increment"
+        string name "Display name"
+        string type "FAVORITE | SYSTEM_CATEGORY | CUSTOM"
+    }
+
+    DockerImage {
+        int id PK "Auto-increment"
+        string name "Image name"
+        string namespace "Publisher namespace"
+        string description "Summary"
+        int starCount "Docker Hub stars"
+        int pullCount "Total pulls"
+        long lastFetchedAt "Timestamp of last API update"
+    }
+
+    ListImageCrossReference {
+        int listId PK, FK "References List.id"
+        int imageId PK, FK "References DockerImage.id"
+    }
+
+    List ||--o{ ListImageCrossReference : contains
+    DockerImage ||--o{ ListImageCrossReference : "belongs to"
+```
 
 ## Tables
 
