@@ -17,8 +17,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Database Schema Documentation' (Protocol in workflow.md)
 
 ## Phase 3: ER Diagram Generation
-- [ ] Task: Add Mermaid ER diagram to database schema doc
-    - [ ] Create a Mermaid.js block within `docs/architecture/database-schema.md`.
-    - [ ] Map out the `DockerImage`, `List`, and cross-reference entities with their relationships.
-    - [ ] Ensure formatting renders correctly in standard Markdown viewers.
+- [x] Task: Add Mermaid ER diagram to database schema doc [a066746]
+    - [x] Create a Mermaid.js block within `docs/architecture/database-schema.md`.
+    - [x] Map out the `DockerImage`, `List`, and cross-reference entities with their relationships.
+    - [x] Ensure formatting renders correctly in standard Markdown viewers.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: ER Diagram Generation' (Protocol in workflow.md)
