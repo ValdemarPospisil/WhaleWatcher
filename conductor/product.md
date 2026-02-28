@@ -43,7 +43,7 @@ To maintain consistency across the codebase, use the following terminology:
 - **Image**: A single Docker image from Docker Hub (e.g., `linuxserver/plex`).
 - **List**: A unified data structure (Room DB entity) containing multiple Images.
 - **Favorites**: A persistent, default system List where users save Images they like.
-- **System Category**: A pre-defined, read-only List based on popular Docker namespaces (e.g., `linuxserver`, `library`, `prom`, `grafana`).
+- **System Category**: A pre-defined, read-only List of handpicked images grouped by topic (e.g., `networking`, `dev tools`, `security`).
 - **Custom List**: A user-created List with a custom name (e.g., "My Weekend Project").
 
 *Architectural Note:* "Favorites", "System Categories", and "Custom Lists" should preferably share the same underlying database structure/logic, differing only by a type flag (e.g., `listType = SYSTEM | FAVORITE | CUSTOM`).
@@ -59,7 +59,7 @@ The app uses a single-activity architecture with Jetpack Navigation Compose. The
 **Purpose:** A discovery feed showing predefined System Categories and the user's Favorites.
 - **Content:**
   - A section/row displaying the **Favorites** List (showing the latest saved images, or a shortcut to the List).
-  - Multiple sections for **System Categories** (e.g., "Top from LinuxServer.io", "Official Images").
+  - Multiple sections for **System Categories** (e.g., "Networking", "Dev Tools").
 - **Behavior:** Clicking on "View All" next to a category, or clicking the category itself, navigates to the *List Detail Screen*. Clicking an image card navigates to the *Image Detail Screen*.
 
 ### Tab 2: Search (Global Discovery)
@@ -103,6 +103,6 @@ The app uses a single-activity architecture with Jetpack Navigation Compose. The
 - **Behavior:** Clicking "Save to List" opens a Bottom Sheet allowing the user to select which List(s) (Favorites or any Custom List) to add the image to. There should also be a button directly on the image to instantly make it a favorite.
 
 ## Core Architecture: The Unified List System & API Rate Limiting
-1. **Unified Lists:** The local Room database must handle both "System Categories" (pre-defined namespaces like `linuxserver`, `library`, `prom`) and "User Custom Wishlists" using the same underlying database entity (e.g., `Wishlist` with a boolean flag `isPredefined`).
+1. **Unified Lists:** The local Room database must handle both "System Categories" (pre-defined handpicked lists like `networking`, `dev tools`) and "User Custom Wishlists" using the same underlying database entity (e.g., `Wishlist` with a boolean flag `isPredefined`).
 2. **Single Source of Truth (SSOT):** To respect Docker Hub's aggressive API rate limits, the app MUST be offline-first. The UI should exclusively observe the Room database (via Kotlin Flows). The Repository layer fetches from the Retrofit API and inserts/updates the Room database.
 3. **Debouncing:** The global search bar must implement a 500ms debounce before hitting the `/v2/search/repositories/` endpoint to prevent HTTP 429 Too Many Requests errors.
