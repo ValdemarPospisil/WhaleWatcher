@@ -1,0 +1,8 @@
+{
+  "track_id": "design_docs_20260228",
+  "type": "chore",
+  "status": "new",
+  "created_at": "2026-02-28T00:00:00Z",
+  "updated_at": "2026-02-28T00:00:00Z",
+  "description": "Create comprehensive documentation for the WhaleWatcher app, including README.md and a detailed design document with ASCII art in docs/, and update conductor/product.md based on specifications."
+}
