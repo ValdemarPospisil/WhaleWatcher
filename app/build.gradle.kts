@@ -41,6 +41,12 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+    }
 }
 
 dependencies {
@@ -67,6 +73,20 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+
+    // Compose
+    val composeBom = platform(libs.compose.bom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.activity.compose)
+    implementation(libs.navigation.compose)
+    
+    debugImplementation(libs.compose.ui.tooling)
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.13.9")
