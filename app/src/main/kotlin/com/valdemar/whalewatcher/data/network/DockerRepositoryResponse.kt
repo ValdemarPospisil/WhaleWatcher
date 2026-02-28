@@ -19,7 +19,7 @@ data class DockerRepository(
     val status: Int? = null,
     val description: String? = null,
     @SerialName("is_private") val isPrivate: Boolean? = null,
-    @SerialName("star_count") val starCount: Int? = null,
-    @SerialName("pull_count") val pullCount: Int? = null,
+    @SerialName("star_count") val starCount: Long? = null,
+    @SerialName("pull_count") val pullCount: Long? = null,
     @SerialName("last_updated") val lastUpdated: String? = null
 )

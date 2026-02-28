@@ -39,6 +39,6 @@ class DockerRepositoryResponseTest {
         val firstResult = response.results[0]
         assertEquals("highland_builder", firstResult.name)
         assertEquals("docker", firstResult.namespace)
-        assertEquals(15722123, firstResult.pullCount)
+        assertEquals(15722123L, firstResult.pullCount)
     }
 }

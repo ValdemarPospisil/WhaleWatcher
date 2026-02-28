@@ -58,11 +58,11 @@ class MainActivity : ComponentActivity() {
                             resultText.text = "Loading..."
                         }
                         is MainUiState.Success -> {
-                            resultText.text = "First Image: \${state.imageName}"
+                            resultText.text = "First Image: ${state.imageName}"
                         }
                         is MainUiState.Error -> {
-                            resultText.text = "Error: \${state.message}"
-                            Log.e("MainActivity", "API Error: \${state.message}")
+                            resultText.text = "Error: ${state.message}"
+                            Log.e("MainActivity", "API Error: ${state.message}")
                         }
                     }
                 }
