@@ -20,3 +20,6 @@
     - [ ] Sub-task: Write failing tests: UI tests (e.g., using Robolectric or Espresso) to verify the Button click triggers a state change and updates the TextView, including error display.
     - [ ] Sub-task: Implement: Add a Button and a TextView to the main UI. Wire the button to the ViewModel's fetch method and observe the state to update the text and handle errors (logging and display).
 - [ ] Task: Conductor - User Manual Verification 'UI Implementation' (Protocol in workflow.md)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions a273c54
