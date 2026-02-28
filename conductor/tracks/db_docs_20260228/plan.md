@@ -8,12 +8,12 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: System Categories Documentation' (Protocol in workflow.md)
 
 ## Phase 2: Database Schema Documentation
-- [ ] Task: Create `docs/architecture/database-schema.md`
-    - [ ] Draft the document introducing the local Room database architecture.
-    - [ ] Detail the `DockerImage` table, specifying the saved fields (Name, Namespace, Description, Star Count, Pull Count) and explaining why only these are saved locally.
-    - [ ] Detail the unified `List` table and the `type` column logic.
-    - [ ] Detail the `ListImageCrossReference` table.
-    - [ ] Explicitly state constraints regarding read-only System Categories and the un-deletable Favorites list.
+- [x] Task: Create `docs/architecture/database-schema.md` [fe341ef]
+    - [x] Draft the document introducing the local Room database architecture.
+    - [x] Detail the `DockerImage` table, specifying the saved fields (Name, Namespace, Description, Star Count, Pull Count) and explaining why only these are saved locally.
+    - [x] Detail the unified `List` table and the `type` column logic.
+    - [x] Detail the `ListImageCrossReference` table.
+    - [x] Explicitly state constraints regarding read-only System Categories and the un-deletable Favorites list.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Database Schema Documentation' (Protocol in workflow.md)
 
 ## Phase 3: ER Diagram Generation
