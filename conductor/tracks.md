@@ -13,5 +13,5 @@
 
 ---
 
-- [ ] **Track: Create technical documentation for the WhaleWatcher app's local database architecture, ER diagram, and the initial set of pre-made System Categories in the docs/ folder.**
+- [x] **Track: Create technical documentation for the WhaleWatcher app's local database architecture, ER diagram, and the initial set of pre-made System Categories in the docs/ folder.**
 *Link: [./tracks/db_docs_20260228/](./tracks/db_docs_20260228/)*
