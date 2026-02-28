@@ -16,10 +16,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Root README Update' (Protocol in workflow.md)
 
 ## Phase 3: Design Documentation Generation
-- [ ] Task: Create `docs/design/overview.md`
-    - [ ] Create `docs/design` directory if it does not exist.
-    - [ ] Write terminology and architecture section in the new document.
-    - [ ] Draft ASCII art and descriptions for Primary Screens (Home, Search, Library).
-    - [ ] Draft ASCII art and descriptions for Secondary Screens (List Detail, Image Detail).
-    - [ ] Review document formatting and completeness.
+- [x] Task: Create `docs/design/overview.md` [b71ddca]
+    - [x] Create `docs/design` directory if it does not exist.
+    - [x] Write terminology and architecture section in the new document.
+    - [x] Draft ASCII art and descriptions for Primary Screens (Home, Search, Library).
+    - [x] Draft ASCII art and descriptions for Secondary Screens (List Detail, Image Detail).
+    - [x] Review document formatting and completeness.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Design Documentation Generation' (Protocol in workflow.md)
