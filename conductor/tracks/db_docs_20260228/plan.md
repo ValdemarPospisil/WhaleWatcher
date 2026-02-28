@@ -1,11 +1,11 @@
 # Implementation Plan: Pre-made Categories and Database Documentation
 
-## Phase 1: System Categories Documentation
+## Phase 1: System Categories Documentation [checkpoint: c999762]
 - [x] Task: Create `docs/architecture/system-categories.md` [d541f62]
     - [x] Create the `docs/architecture` directory.
     - [x] Draft the document detailing the 5 chosen categories (Databases, DevOps & CI/CD, Media Server, Web Servers, Operating Systems).
     - [x] Explain that these are pre-filled, read-only lists provided by the app.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: System Categories Documentation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: System Categories Documentation' (Protocol in workflow.md)
 
 ## Phase 2: Database Schema Documentation
 - [ ] Task: Create `docs/architecture/database-schema.md`
