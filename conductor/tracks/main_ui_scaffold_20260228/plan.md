@@ -1,13 +1,13 @@
 # Implementation Plan: Main UI Scaffold and Theming
 
-## Phase 1: Setup and Theming
+## Phase 1: Setup and Theming [checkpoint: bf8ec5d]
 - [x] Task: Configure Jetpack Compose and dependencies [425b342]
     - [x] Update `build.gradle.kts` (app level) to enable Compose and add necessary dependencies (Navigation Compose, Material 3, Tooling).
     - [x] Sync Gradle project.
 - [x] Task: Implement "Deep Ocean" Theme [425b342]
     - [x] Create/Update `ui/theme/Color.kt` with Dark Blue and Teal palette.
     - [x] Create/Update `ui/theme/Theme.kt` to apply the color palette to `MaterialTheme`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Setup and Theming' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Setup and Theming' (Protocol in workflow.md)
 
 ## Phase 2: Core Navigation Architecture
 - [ ] Task: Create Bottom Navigation Bar
