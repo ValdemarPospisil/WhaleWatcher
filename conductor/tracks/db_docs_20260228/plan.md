@@ -7,14 +7,14 @@
     - [x] Explain that these are pre-filled, read-only lists provided by the app.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: System Categories Documentation' (Protocol in workflow.md)
 
-## Phase 2: Database Schema Documentation
+## Phase 2: Database Schema Documentation [checkpoint: 9580e99]
 - [x] Task: Create `docs/architecture/database-schema.md` [fe341ef]
     - [x] Draft the document introducing the local Room database architecture.
     - [x] Detail the `DockerImage` table, specifying the saved fields (Name, Namespace, Description, Star Count, Pull Count) and explaining why only these are saved locally.
     - [x] Detail the unified `List` table and the `type` column logic.
     - [x] Detail the `ListImageCrossReference` table.
     - [x] Explicitly state constraints regarding read-only System Categories and the un-deletable Favorites list.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Database Schema Documentation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Database Schema Documentation' (Protocol in workflow.md)
 
 ## Phase 3: ER Diagram Generation
 - [ ] Task: Add Mermaid ER diagram to database schema doc
