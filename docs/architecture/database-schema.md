@@ -17,6 +17,10 @@ This table stores minimal but essential information about Docker images. The goa
 - `description`: A brief summary of the image's purpose.
 - `starCount`: The number of stars on Docker Hub.
 - `pullCount`: The total number of pulls.
+- `lastFetchedAt`: A timestamp recording when the image details (like star count and pull count) were last updated from the API.
+
+**Constraints:**
+- The combination of `name` and `namespace` MUST be unique across the table to prevent duplicate entries for the same image.
 
 **Rationale:** When a user views a list (e.g., "Favorites"), the UI reads exclusively from the local Room database via Kotlin Flows. It only fetches full details from the Docker Hub API when the user explicitly clicks into an individual *Image Detail Screen*.
 
