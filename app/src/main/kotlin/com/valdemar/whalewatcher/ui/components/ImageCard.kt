@@ -53,7 +53,7 @@ fun ImageCard(
                     imageVector = Icons.Default.FavoriteBorder,
                     contentDescription = "Save to favorites",
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.width(16.dp).height(16.dp)
+                    modifier = Modifier.width(20.dp).height(20.dp)
                 )
             }
             Text(
