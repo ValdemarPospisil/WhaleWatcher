@@ -20,7 +20,7 @@
     - [ ] Write failing test for maintaining total count.
     - [ ] Implement ViewModel utilizing Kotlin Flows (`StateFlow` for UI state, `debounce` operator for search input).
     - [ ] Verify all tests pass.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Search ViewModel Implementation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Search ViewModel Implementation' (Protocol in workflow.md) [checkpoint: 7a31fb3]
 
 ## Phase 3: UI Implementation
 - [ ] Task: Update `SearchScreen` Composable
