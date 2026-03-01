@@ -19,17 +19,17 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Core Navigation Architecture' (Protocol in workflow.md)
 
 ## Phase 3: Screen Implementations with Dummy Data
-- [ ] Task: Create Dummy Data Models
-    - [ ] Create static models for `DockerImage` (namespace, name, stars, pulls) and `ImageCategory`.
-    - [ ] Populate lists with dummy data based on the System Categories documentation.
-- [ ] Task: Implement Home Screen
-    - [ ] Create `HomeScreen` composable with a vertical scrolling column.
-    - [ ] Implement horizontally scrolling rows for System Categories and Favorites.
-- [ ] Task: Implement Search and Library Screens
-    - [ ] Create `SearchScreen` with a disabled search bar UI.
-    - [ ] Create `LibraryScreen` showing a vertical list of collections (Favorites, Custom Lists).
-- [ ] Task: Implement List Details Screen
-    - [ ] Create `ListDetailsScreen` composable taking a category/list name as an argument.
-    - [ ] Display a vertical list of image cards.
-    - [ ] Wire navigation from Home/Library to List Details.
+- [x] Task: Create Dummy Data Models [0f7e48b]
+    - [x] Create static models for `DockerImage` (namespace, name, stars, pulls) and `ImageCategory`.
+    - [x] Populate lists with dummy data based on the System Categories documentation.
+- [x] Task: Implement Home Screen [a0fc411]
+    - [x] Create `HomeScreen` composable with a vertical scrolling column.
+    - [x] Implement horizontally scrolling rows for System Categories and Favorites.
+- [x] Task: Implement Search and Library Screens [5203174]
+    - [x] Create `SearchScreen` with a disabled search bar UI.
+    - [x] Create `LibraryScreen` showing a vertical list of collections (Favorites, Custom Lists).
+- [x] Task: Implement List Details Screen [6494dee]
+    - [x] Create `ListDetailsScreen` composable taking a category/list name as an argument.
+    - [x] Display a vertical list of image cards.
+    - [x] Wire navigation from Home/Library to List Details.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Screen Implementations with Dummy Data' (Protocol in workflow.md)
