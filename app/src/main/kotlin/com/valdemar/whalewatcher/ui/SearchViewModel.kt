@@ -48,6 +48,7 @@ class SearchViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            @Suppress("OPT_IN_USAGE")
             _searchQuery
                 .debounce(500L)
                 .distinctUntilChanged()
