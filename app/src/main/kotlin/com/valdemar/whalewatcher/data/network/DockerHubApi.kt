@@ -2,6 +2,7 @@ package com.valdemar.whalewatcher.data.network
 
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface DockerHubApi {
 
@@ -9,4 +10,10 @@ interface DockerHubApi {
     suspend fun getPublicRepositories(
         @Path("namespace") namespace: String
     ): DockerRepositoryResponse
+
+    @GET("v2/search/repositories/")
+    suspend fun searchRepositories(
+        @Query("query") query: String,
+        @Query("page") page: Int? = null
+    ): DockerSearchResponse
 }
