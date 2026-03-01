@@ -20,3 +20,8 @@
 
 - [x] **Track: Scaffold the main UI of the WhaleWatcher app using Jetpack Compose, including the Deep Ocean theme, Bottom Navigation Bar, and dummy-data populated Home, Search, Library, and List Details screens.**
 *Link: [./tracks/main_ui_scaffold_20260228/](./tracks/main_ui_scaffold_20260228/)*
+
+---
+
+- [ ] **Track: Implement Docker Hub image search with 500ms debounce, infinite scroll pagination, and result state handling.**
+*Link: [./tracks/docker_search_20260301/](./tracks/docker_search_20260301/)*
