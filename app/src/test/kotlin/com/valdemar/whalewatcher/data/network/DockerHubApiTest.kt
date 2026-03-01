@@ -65,4 +65,42 @@ class DockerHubApiTest {
         assertEquals(1, response.count)
         assertEquals("ubuntu", response.results[0].name)
     }
+
+    @Test
+    fun searchRepositories_returnsParsedResponse() = runBlocking {
+        val mockResponseJson = """
+        {
+          "count": 5029,
+          "next": "https://hub.docker.com/v2/search/repositories/?page=2&query=minecraft",
+          "previous": null,
+          "results": [
+            {
+              "repo_name": "pufferpanel/minecraft",
+              "short_description": "Minecraft image for pufferd",
+              "star_count": 8,
+              "pull_count": 255271,
+              "repo_owner": "",
+              "is_automated": true,
+              "is_official": false
+            }
+          ]
+        }
+        """.trimIndent()
+
+        mockWebServer.enqueue(MockResponse().setBody(mockResponseJson).setResponseCode(200))
+
+        val response = api.searchRepositories("minecraft", 1)
+
+        val recordedRequest = mockWebServer.takeRequest()
+        assertEquals("/v2/search/repositories/?query=minecraft&page=1", recordedRequest.path)
+        assertEquals("GET", recordedRequest.method)
+
+        assertEquals(5029, response.count)
+        assertEquals("https://hub.docker.com/v2/search/repositories/?page=2&query=minecraft", response.next)
+        assertEquals(1, response.results.size)
+        assertEquals("pufferpanel/minecraft", response.results[0].repoName)
+        assertEquals("Minecraft image for pufferd", response.results[0].shortDescription)
+        assertEquals(8L, response.results[0].starCount)
+        assertEquals(255271L, response.results[0].pullCount)
+    }
 }
