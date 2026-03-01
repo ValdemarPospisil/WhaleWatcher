@@ -18,7 +18,7 @@
     - [x] Implement `NavHost` within the `Scaffold` content area, wiring up the routes to placeholder screens.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Core Navigation Architecture' (Protocol in workflow.md)
 
-## Phase 3: Screen Implementations with Dummy Data
+## Phase 3: Screen Implementations with Dummy Data [checkpoint: 6afb638]
 - [x] Task: Create Dummy Data Models [0f7e48b]
     - [x] Create static models for `DockerImage` (namespace, name, stars, pulls) and `ImageCategory`.
     - [x] Populate lists with dummy data based on the System Categories documentation.
@@ -32,4 +32,4 @@
     - [x] Create `ListDetailsScreen` composable taking a category/list name as an argument.
     - [x] Display a vertical list of image cards.
     - [x] Wire navigation from Home/Library to List Details.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Screen Implementations with Dummy Data' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Screen Implementations with Dummy Data' (Protocol in workflow.md)
