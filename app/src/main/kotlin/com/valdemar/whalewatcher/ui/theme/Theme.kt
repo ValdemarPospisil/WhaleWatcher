@@ -29,7 +29,6 @@ private val DeepOceanColorScheme = darkColorScheme(
 // We force the dark theme for the "Deep Ocean" aesthetic regardless of system settings for now
 @Composable
 fun WhaleWatcherTheme(
-    darkTheme: Boolean = true, // Force dark theme by default
     content: @Composable () -> Unit
 ) {
     val colorScheme = DeepOceanColorScheme
