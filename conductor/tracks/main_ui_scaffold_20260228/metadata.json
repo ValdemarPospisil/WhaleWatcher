@@ -1,0 +1,8 @@
+{
+  "track_id": "main_ui_scaffold_20260228",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-28T00:00:00Z",
+  "updated_at": "2026-02-28T00:00:00Z",
+  "description": "Scaffold the main UI of the WhaleWatcher app using Jetpack Compose, including the Deep Ocean theme, Bottom Navigation Bar, and dummy-data populated Home, Search, Library, and List Details screens."
+}
