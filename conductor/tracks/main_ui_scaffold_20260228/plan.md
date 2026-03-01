@@ -9,14 +9,14 @@
     - [x] Create/Update `ui/theme/Theme.kt` to apply the color palette to `MaterialTheme`.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Setup and Theming' (Protocol in workflow.md)
 
-## Phase 2: Core Navigation Architecture
-- [ ] Task: Create Bottom Navigation Bar
-    - [ ] Define sealed class for `Screen` routes (Home, Search, Library, ListDetails).
-    - [ ] Create `BottomNavigationBar` composable component.
-- [ ] Task: Setup NavHost and Main Scaffold
-    - [ ] Update `MainActivity.kt` to use a Compose `Scaffold`.
-    - [ ] Implement `NavHost` within the `Scaffold` content area, wiring up the routes to placeholder screens.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Core Navigation Architecture' (Protocol in workflow.md)
+## Phase 2: Core Navigation Architecture [checkpoint: 79a64fb]
+- [x] Task: Create Bottom Navigation Bar [f914a79]
+    - [x] Define sealed class for `Screen` routes (Home, Search, Library, ListDetails).
+    - [x] Create `BottomNavigationBar` composable component.
+- [x] Task: Setup NavHost and Main Scaffold [f914a79]
+    - [x] Update `MainActivity.kt` to use a Compose `Scaffold`.
+    - [x] Implement `NavHost` within the `Scaffold` content area, wiring up the routes to placeholder screens.
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Core Navigation Architecture' (Protocol in workflow.md)
 
 ## Phase 3: Screen Implementations with Dummy Data
 - [ ] Task: Create Dummy Data Models
