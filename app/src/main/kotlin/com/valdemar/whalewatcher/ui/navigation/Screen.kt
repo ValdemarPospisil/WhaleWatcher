@@ -14,7 +14,7 @@ sealed class Screen(val route: String, @StringRes val resourceId: Int? = null, v
     
     // Secondary screens
     object ListDetails : Screen("list_details/{listName}") {
-        fun createRoute(listName: String) = "list_details/$listName"
+        fun createRoute(listName: String) = "list_details/${android.net.Uri.encode(listName)}"
     }
 }
 
