@@ -6,7 +6,7 @@
     - [ ] Implement `searchRepositories` method with query and page parameters.
     - [ ] Update models if needed to handle the specific JSON structure returned by the search endpoint.
     - [ ] Verify test passes.
-- [ ] Task: Update `DockerImageRepository`
+- [x] Task: Update `DockerImageRepository` b4888a8
     - [ ] Write failing test for `searchImages` function supporting pagination.
     - [ ] Implement `searchImages` integrating the API call.
     - [ ] Verify test passes.
