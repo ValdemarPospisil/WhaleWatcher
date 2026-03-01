@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -74,7 +77,16 @@ fun WhaleWatcherApp() {
                 )
             }
             composable(Screen.Search.route) {
-                SearchScreen()
+                val searchViewModel: SearchViewModel = hiltViewModel()
+                val uiState by searchViewModel.uiState.collectAsState()
+                val searchQuery by searchViewModel.searchQuery.collectAsState()
+
+                SearchScreen(
+                    uiState = uiState,
+                    searchQuery = searchQuery,
+                    onQueryChange = searchViewModel::onSearchQueryChanged,
+                    onLoadNextPage = searchViewModel::loadNextPage
+                )
             }
             composable(Screen.Library.route) {
                 LibraryScreen(
