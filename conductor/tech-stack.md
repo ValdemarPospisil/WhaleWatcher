@@ -28,5 +28,7 @@
 - **Reactive Streams:** Kotlin Flow (for database and network data streams)
 
 ## Testing
-- **Unit Testing:** JUnit 5
+- **Unit Testing:** JUnit 4 / JUnit 5
 - **Mocking:** MockK
+- **UI Testing:** Jetpack Compose UI Testing (JUnit 4 rules)
+- **Android Environment Mocking:** Robolectric
