@@ -15,8 +15,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Folder
-import androidx.compose.material3.Divider
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -69,7 +69,7 @@ fun LibraryScreen(onNavigateToList: (String) -> Unit) {
                     iconTint = MaterialTheme.colorScheme.error,
                     onClick = { onNavigateToList(DummyData.favorites.title) }
                 )
-                Divider(
+                HorizontalDivider(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                     color = MaterialTheme.colorScheme.surfaceVariant
                 )
@@ -79,7 +79,7 @@ fun LibraryScreen(onNavigateToList: (String) -> Unit) {
             items(DummyData.customLists) { customList ->
                 LibraryListItem(
                     title = customList.title,
-                    icon = Icons.Default.Folder,
+                    icon = Icons.AutoMirrored.Filled.List,
                     iconTint = MaterialTheme.colorScheme.secondary,
                     onClick = { onNavigateToList(customList.title) }
                 )
