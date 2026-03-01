@@ -10,7 +10,7 @@
     - [ ] Write failing test for `searchImages` function supporting pagination.
     - [ ] Implement `searchImages` integrating the API call.
     - [ ] Verify test passes.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: API & Data Layer Updates' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: API & Data Layer Updates' (Protocol in workflow.md) [checkpoint: 859f3b5]
 
 ## Phase 2: Search ViewModel Implementation
 - [ ] Task: Create or update `SearchViewModel`
