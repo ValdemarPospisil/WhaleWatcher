@@ -1,7 +1,7 @@
 # Implementation Plan: Image Detail Screen
 
 ## Phase 1: API, Models & Repository
-- [ ] Task: Update `DockerHubApi.kt` and define Models
+- [x] Task: Update `DockerHubApi.kt` and define Models eb6a6ec
     - [ ] Add `GetRepository` and `ListRepositoryTags` to `DockerHubApi.kt`.
     - [ ] Define `RepositoryInfo` and `TagResponse` data classes.
 - [ ] Task: Update `DockerImageRepository`
