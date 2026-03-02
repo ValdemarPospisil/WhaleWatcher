@@ -7,19 +7,33 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 
-sealed class Screen(val route: String, @StringRes val resourceId: Int? = null, val icon: ImageVector? = null) {
+sealed class Screen(
+    val route: String,
+    @StringRes val resourceId: Int? = null,
+    val icon: ImageVector? = null,
+) {
     object Home : Screen("home", android.R.string.untitled, Icons.Filled.Home) // We will replace string res later
+
     object Search : Screen("search", android.R.string.search_go, Icons.Filled.Search)
+
     object Library : Screen("library", android.R.string.copy, Icons.AutoMirrored.Filled.List)
-    
+
     // Secondary screens
     object ListDetails : Screen("list_details/{listName}") {
         fun createRoute(listName: String) = "list_details/${android.net.Uri.encode(listName)}"
     }
+
+    object ImageDetail : Screen("image_detail/{namespace}/{repository}") {
+        fun createRoute(
+            namespace: String,
+            repository: String,
+        ) = "image_detail/${android.net.Uri.encode(namespace)}/${android.net.Uri.encode(repository)}"
+    }
 }
 
-val BottomNavScreens = listOf(
-    Screen.Home,
-    Screen.Search,
-    Screen.Library
-)
+val BottomNavScreens =
+    listOf(
+        Screen.Home,
+        Screen.Search,
+        Screen.Library,
+    )
