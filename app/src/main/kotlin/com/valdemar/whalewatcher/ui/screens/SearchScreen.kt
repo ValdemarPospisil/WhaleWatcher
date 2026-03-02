@@ -36,13 +36,14 @@ fun SearchScreen(
     uiState: SearchUiState = SearchUiState.Idle,
     searchQuery: String = "",
     onQueryChange: (String) -> Unit = {},
-    onLoadNextPage: () -> Unit = {}
+    onLoadNextPage: () -> Unit = {},
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         SearchBar(
             query = searchQuery,
@@ -53,9 +54,10 @@ fun SearchScreen(
             placeholder = { Text("Search for an image...") },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
             modifier = Modifier.fillMaxWidth(),
-            colors = SearchBarDefaults.colors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant
-            )
+            colors =
+                SearchBarDefaults.colors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                ),
         ) {}
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -67,13 +69,13 @@ fun SearchScreen(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
                     modifier = Modifier.size(64.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Search the entire Docker Hub registry",
                     style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                 )
                 Spacer(modifier = Modifier.weight(1.5f))
             }
@@ -87,7 +89,7 @@ fun SearchScreen(
                     Text(
                         text = "No results found",
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
@@ -96,7 +98,7 @@ fun SearchScreen(
                     Text(
                         text = uiState.message,
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.error
+                        color = MaterialTheme.colorScheme.error,
                     )
                 }
             }
@@ -104,16 +106,17 @@ fun SearchScreen(
                 Text(
                     text = "Total found: ${uiState.totalCount}",
                     style = MaterialTheme.typography.labelLarge,
-                    modifier = Modifier.align(Alignment.Start)
+                    modifier = Modifier.align(Alignment.Start),
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                
+
                 val listState = rememberLazyListState()
-                
+
                 LaunchedEffect(listState) {
                     snapshotFlow { listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index }
                         .collect { lastIndex ->
-                            if (lastIndex != null && lastIndex >= uiState.results.size - 5 && uiState.hasNextPage && !uiState.isFetchingNextPage) {
+                            val isNearEnd = lastIndex != null && lastIndex >= uiState.results.size - 5
+                            if (isNearEnd && uiState.hasNextPage && !uiState.isFetchingNextPage) {
                                 onLoadNextPage()
                             }
                         }
@@ -122,14 +125,17 @@ fun SearchScreen(
                 LazyColumn(
                     state = listState,
                     modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     items(uiState.results) { item ->
                         Text(text = item.repoName)
                     }
                     if (uiState.isFetchingNextPage) {
                         item {
-                            Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = Alignment.Center) {
+                            Box(
+                                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
                                 CircularProgressIndicator(modifier = Modifier.testTag("LoadingIndicator"))
                             }
                         }
