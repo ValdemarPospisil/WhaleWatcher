@@ -1,0 +1,8 @@
+{
+  "track_id": "api_documentation_20260224",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-24T00:00:00Z",
+  "updated_at": "2026-02-24T00:00:00Z",
+  "description": "Hello i would like to make more documentation, mainly about the API, there is a yaml file with probably all of the endpoints that we can use to communicate with docker hub @docs/api/api-docs.yaml , but we do not need all of them, since there will be no logging in or authorization as of yet, there is a lot of them we dont need, what we want is to display the docker images to the user, i think it is by tags and stuff im not really sure so you will need to find out. For now leave the searching for images out of this as well, lets just display them based on tags or categories. So I would like to create a .md file in the docs that will explain which endpoints we will actually use and what they do and how will the flow look like, you can make a mermaid diagram as well, lets just name it README for now in the docs/api folder. The file has more than 4000 lines so it will not be easy, you can start on line 1000 to line like 2500 which is where the important stuff should be. you can ask me anything"
+}
