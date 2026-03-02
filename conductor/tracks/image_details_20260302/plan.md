@@ -1,13 +1,13 @@
 # Implementation Plan: Image Detail Screen
 
-## Phase 1: API, Models & Repository
+## Phase 1: API, Models & Repository [checkpoint: 49fafb8]
 - [x] Task: Update `DockerHubApi.kt` and define Models eb6a6ec
     - [ ] Add `GetRepository` and `ListRepositoryTags` to `DockerHubApi.kt`.
     - [ ] Define `RepositoryInfo` and `TagResponse` data classes.
-- [ ] Task: Update `DockerImageRepository`
+- [x] Task: Update `DockerImageRepository` 6bb75b4
     - [ ] Write unit tests for `getImageDetails` and `getImageTags` in `DockerImageRepositoryTest`.
     - [ ] Implement `getImageDetails` and `getImageTags` in `DockerImageRepository`.
-- [ ] Task: Conductor - User Manual Verification 'API & Models' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'API & Models' (Protocol in workflow.md) 49fafb8
 
 ## Phase 2: Navigation & Click Triggers
 - [ ] Task: Navigation Configuration
