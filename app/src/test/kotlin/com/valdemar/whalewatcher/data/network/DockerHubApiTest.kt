@@ -103,4 +103,71 @@ class DockerHubApiTest {
         assertEquals(8L, response.results[0].starCount)
         assertEquals(255271L, response.results[0].pullCount)
     }
+
+    @Test
+    fun getRepository_returnsParsedResponse() = runBlocking {
+        val mockResponseJson = """
+        {
+          "name": "minecraft",
+          "namespace": "pufferpanel",
+          "repository_type": "image",
+          "status": 1,
+          "status_description": "active",
+          "description": "Minecraft image for pufferd",
+          "is_private": false,
+          "star_count": 8,
+          "pull_count": 255271,
+          "last_updated": "2023-01-01T12:00:00.000Z",
+          "date_registered": "2020-01-01T12:00:00.000Z"
+        }
+        """.trimIndent()
+
+        mockWebServer.enqueue(MockResponse().setBody(mockResponseJson).setResponseCode(200))
+
+        val response = api.getRepository("pufferpanel", "minecraft")
+
+        val recordedRequest = mockWebServer.takeRequest()
+        assertEquals("/v2/namespaces/pufferpanel/repositories/minecraft", recordedRequest.path)
+        assertEquals("GET", recordedRequest.method)
+
+        assertEquals("minecraft", response.name)
+        assertEquals("pufferpanel", response.namespace)
+        assertEquals("Minecraft image for pufferd", response.description)
+        assertEquals(8L, response.starCount)
+        assertEquals(255271L, response.pullCount)
+        assertEquals("2023-01-01T12:00:00.000Z", response.lastUpdated)
+        assertEquals(false, response.isPrivate)
+    }
+
+    @Test
+    fun getRepositoryTags_returnsParsedResponse() = runBlocking {
+        val mockResponseJson = """
+        {
+          "count": 2,
+          "next": null,
+          "previous": null,
+          "results": [
+            {
+              "name": "latest",
+              "full_size": 1024000,
+              "tag_last_pushed": "2023-01-01T12:00:00.000Z"
+            }
+          ]
+        }
+        """.trimIndent()
+
+        mockWebServer.enqueue(MockResponse().setBody(mockResponseJson).setResponseCode(200))
+
+        val response = api.getRepositoryTags("pufferpanel", "minecraft")
+
+        val recordedRequest = mockWebServer.takeRequest()
+        assertEquals("/v2/namespaces/pufferpanel/repositories/minecraft/tags", recordedRequest.path)
+        assertEquals("GET", recordedRequest.method)
+
+        assertEquals(2, response.count)
+        assertEquals(1, response.results.size)
+        assertEquals("latest", response.results[0].name)
+        assertEquals(1024000L, response.results[0].fullSize)
+        assertEquals("2023-01-01T12:00:00.000Z", response.results[0].tagLastPushed)
+    }
 }
