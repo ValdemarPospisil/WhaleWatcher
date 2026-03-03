@@ -86,7 +86,7 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.activity.compose)
     implementation(libs.navigation.compose)
-    
+
     debugImplementation(libs.compose.ui.tooling)
 
     testImplementation("junit:junit:4.13.2")

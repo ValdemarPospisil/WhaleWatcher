@@ -33,7 +33,7 @@ import com.valdemar.whalewatcher.ui.models.DummyData
 fun ListDetailsScreen(
     listName: String,
     onNavigateBack: () -> Unit,
-    onNavigateToImage: (String, String) -> Unit = { _, _ -> }
+    onNavigateToImage: (String, String) -> Unit = { _, _ -> },
 ) {
     // Resolve the category based on the listName from dummy data
     val category =

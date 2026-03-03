@@ -19,7 +19,6 @@ import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainViewModelTest {
-
     private val testDispatcher = UnconfinedTestDispatcher()
     private lateinit var repository: DockerImageRepository
     private lateinit var viewModel: MainViewModel
@@ -37,28 +36,31 @@ class MainViewModelTest {
     }
 
     @Test
-    fun fetchImage_success_updatesStateToSuccess() = runTest {
-        val mockResponse = DockerRepositoryResponse(
-            count = 1,
-            results = listOf(DockerRepository(name = "alpine", namespace = "library"))
-        )
-        coEvery { repository.getRepositories("library") } returns Result.success(mockResponse)
+    fun fetchImage_success_updatesStateToSuccess() =
+        runTest {
+            val mockResponse =
+                DockerRepositoryResponse(
+                    count = 1,
+                    results = listOf(DockerRepository(name = "alpine", namespace = "library")),
+                )
+            coEvery { repository.getRepositories("library") } returns Result.success(mockResponse)
 
-        viewModel.fetchImages()
+            viewModel.fetchImages()
 
-        val state = viewModel.uiState.value
-        assertTrue(state is MainUiState.Success)
-        assertEquals("alpine", (state as MainUiState.Success).imageName)
-    }
+            val state = viewModel.uiState.value
+            assertTrue(state is MainUiState.Success)
+            assertEquals("alpine", (state as MainUiState.Success).imageName)
+        }
 
     @Test
-    fun fetchImage_error_updatesStateToError() = runTest {
-        coEvery { repository.getRepositories("library") } returns Result.failure(RuntimeException("Network error"))
+    fun fetchImage_error_updatesStateToError() =
+        runTest {
+            coEvery { repository.getRepositories("library") } returns Result.failure(RuntimeException("Network error"))
 
-        viewModel.fetchImages()
+            viewModel.fetchImages()
 
-        val state = viewModel.uiState.value
-        assertTrue(state is MainUiState.Error)
-        assertEquals("Network error", (state as MainUiState.Error).message)
-    }
+            val state = viewModel.uiState.value
+            assertTrue(state is MainUiState.Error)
+            assertEquals("Network error", (state as MainUiState.Error).message)
+        }
 }

@@ -8,7 +8,7 @@ data class DockerSearchResponse(
     val count: Int,
     val next: String? = null,
     val previous: String? = null,
-    val results: List<DockerSearchResult>
+    val results: List<DockerSearchResult>,
 )
 
 @Serializable
@@ -19,5 +19,5 @@ data class DockerSearchResult(
     @SerialName("pull_count") val pullCount: Long? = null,
     @SerialName("repo_owner") val repoOwner: String? = null,
     @SerialName("is_automated") val isAutomated: Boolean? = null,
-    @SerialName("is_official") val isOfficial: Boolean? = null
+    @SerialName("is_official") val isOfficial: Boolean? = null,
 )

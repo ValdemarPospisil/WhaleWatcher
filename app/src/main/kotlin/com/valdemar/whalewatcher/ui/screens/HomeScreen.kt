@@ -27,7 +27,7 @@ import com.valdemar.whalewatcher.ui.models.DummyData
 @Composable
 fun HomeScreen(
     onNavigateToList: (String) -> Unit,
-    onNavigateToImage: (String, String) -> Unit = { _, _ -> }
+    onNavigateToImage: (String, String) -> Unit = { _, _ -> },
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
