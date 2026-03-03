@@ -9,18 +9,18 @@
     - [ ] Implement `getImageDetails` and `getImageTags` in `DockerImageRepository`.
 - [x] Task: Conductor - User Manual Verification 'API & Models' (Protocol in workflow.md) 49fafb8
 
-## Phase 2: Navigation & Click Triggers
-- [ ] Task: Navigation Configuration
+## Phase 2: Navigation & Click Triggers [checkpoint: b9d079e]
+- [x] Task: Navigation Configuration 53fcbdf
     - [ ] Add `ImageDetail` route to `Screen.kt`.
     - [ ] Register `ImageDetailScreen` in `MainActivity.kt`'s `NavHost`.
-- [ ] Task: Implement Navigation Triggers
+- [x] Task: Implement Navigation Triggers 863b0a5
     - [ ] Make `ImageCard` clickable and trigger navigation in `HomeScreen` and `LibraryScreen`.
     - [ ] Update `SearchScreen` result items to be clickable and navigate to details.
     - [ ] Write navigation verification tests for `SearchScreenTest`.
-- [ ] Task: Conductor - User Manual Verification 'Navigation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Navigation' (Protocol in workflow.md) b9d079e
 
 ## Phase 3: Screen UI & Design Refinement
-- [ ] Task: `ImageDetailViewModel` Implementation
+- [~] Task: `ImageDetailViewModel` Implementation
     - [ ] Write unit tests for `ImageDetailViewModel` state management.
     - [ ] Implement `ImageDetailViewModel` to fetch and expose image details and tags.
 - [ ] Task: `ImageDetailScreen` UI
