@@ -103,10 +103,11 @@ class SearchScreenTest {
 
     @Test
     fun `success state result item click triggers navigation callback`() {
-        val results = listOf(
-            DockerSearchResult(repoName = "library/nginx", shortDescription = "Nginx")
-        )
-        
+        val results =
+            listOf(
+                DockerSearchResult(repoName = "library/nginx", shortDescription = "Nginx"),
+            )
+
         var navigatedNamespace = ""
         var navigatedName = ""
 
@@ -119,12 +120,12 @@ class SearchScreenTest {
                 onNavigateToImage = { namespace, name ->
                     navigatedNamespace = namespace
                     navigatedName = name
-                }
+                },
             )
         }
 
         composeTestRule.onNodeWithText("library/nginx").performClick()
-        
+
         assert(navigatedNamespace == "library")
         assert(navigatedName == "nginx")
     }

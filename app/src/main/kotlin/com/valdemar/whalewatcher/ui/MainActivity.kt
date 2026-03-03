@@ -77,7 +77,7 @@ fun WhaleWatcherApp() {
                     },
                     onNavigateToImage = { namespace, name ->
                         navController.navigate(Screen.ImageDetail.createRoute(namespace, name))
-                    }
+                    },
                 )
             }
             composable(Screen.Search.route) {
@@ -92,7 +92,7 @@ fun WhaleWatcherApp() {
                     onLoadNextPage = searchViewModel::loadNextPage,
                     onNavigateToImage = { namespace, name ->
                         navController.navigate(Screen.ImageDetail.createRoute(namespace, name))
-                    }
+                    },
                 )
             }
             composable(Screen.Library.route) {
@@ -112,7 +112,7 @@ fun WhaleWatcherApp() {
                     onNavigateBack = { navController.popBackStack() },
                     onNavigateToImage = { namespace, name ->
                         navController.navigate(Screen.ImageDetail.createRoute(namespace, name))
-                    }
+                    },
                 )
             }
             composable(

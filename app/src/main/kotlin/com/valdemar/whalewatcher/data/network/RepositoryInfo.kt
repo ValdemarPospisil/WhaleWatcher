@@ -15,5 +15,5 @@ data class RepositoryInfo(
     @SerialName("date_registered") val dateRegistered: String? = null,
     @SerialName("is_private") val isPrivate: Boolean = false,
     @SerialName("status") val status: Int? = null,
-    @SerialName("status_description") val statusDescription: String? = null
+    @SerialName("status_description") val statusDescription: String? = null,
 )
