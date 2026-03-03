@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -20,10 +22,10 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material3.Button
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -54,6 +56,7 @@ import com.valdemar.whalewatcher.ui.ImageDetailViewModel
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,6 +69,7 @@ fun ImageDetailScreen(
     val uiState by viewModel.uiState.collectAsState()
     var selectedTabIndex by remember { mutableIntStateOf(0) }
     val tabs = listOf("Info", "Tags")
+    val context = LocalContext.current
 
     LaunchedEffect(namespace, repository) {
         viewModel.loadDetails(namespace, repository)
@@ -92,6 +96,36 @@ fun ImageDetailScreen(
                         navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
                     ),
             )
+        },
+        bottomBar = {
+            if (uiState is ImageDetailUiState.Success) {
+                BottomAppBar(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        IconButton(onClick = { /* Will open bottom sheet */ }) {
+                            Text("💾", style = MaterialTheme.typography.headlineMedium)
+                        }
+                        IconButton(
+                            onClick = {
+                                val info = (uiState as ImageDetailUiState.Success).repositoryInfo
+                                val intent =
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://hub.docker.com/r/${info.namespace}/${info.name}"),
+                                    )
+                                context.startActivity(intent)
+                            },
+                        ) {
+                            Text("🌐", style = MaterialTheme.typography.headlineMedium)
+                        }
+                    }
+                }
+            }
         },
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding).fillMaxSize()) {
@@ -131,8 +165,6 @@ fun ImageDetailScreen(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun InfoTabContent(info: RepositoryInfo) {
-    val context = LocalContext.current
-
     Column(
         modifier =
             Modifier
@@ -200,7 +232,7 @@ fun InfoTabContent(info: RepositoryInfo) {
         // Stats
         Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
             Column {
-                Text("Pulls", style = MaterialTheme.typography.labelSmall)
+                Text("⬇️ Pulls", style = MaterialTheme.typography.labelSmall)
                 Text(
                     text = formatCount(info.pullCount),
                     style = MaterialTheme.typography.titleMedium,
@@ -208,7 +240,7 @@ fun InfoTabContent(info: RepositoryInfo) {
                 )
             }
             Column {
-                Text("Stars", style = MaterialTheme.typography.labelSmall)
+                Text("⭐ Stars", style = MaterialTheme.typography.labelSmall)
                 Text(
                     text = formatCount(info.starCount),
                     style = MaterialTheme.typography.titleMedium,
@@ -227,31 +259,11 @@ fun InfoTabContent(info: RepositoryInfo) {
             style = MaterialTheme.typography.bodyMedium,
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
-
-        Button(
-            onClick = { /* Will open bottom sheet */ },
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text("Save to List")
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Button(
-            onClick = {
-                val intent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://hub.docker.com/r/${info.namespace}/${info.name}"))
-                context.startActivity(intent)
-            },
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text("View on Docker Hub")
-        }
+        // Add extra space at the bottom to ensure content isn't hidden behind the floating bar
+        Spacer(modifier = Modifier.height(80.dp))
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun TagsTabContent(tags: List<DockerTag>) {
     if (tags.isEmpty()) {
@@ -259,29 +271,23 @@ fun TagsTabContent(tags: List<DockerTag>) {
             Text("No tags available", color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     } else {
-        FlowRow(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
         ) {
-            tags.forEach { tag ->
+            items(tags) { tag ->
                 val sizeInMB = tag.fullSize / (1024 * 1024).toFloat()
-                val sizeText = if (sizeInMB > 0) String.format("%.1f MB", sizeInMB) else "Unknown Size"
+                val sizeText = if (sizeInMB > 0) String.format(Locale.US, "%.1f MB", sizeInMB) else "Unknown Size"
 
-                FilterChip(
-                    selected = false,
-                    onClick = { /* No action needed for tag */ },
-                    label = {
-                        Column {
-                            Text(tag.name, fontWeight = FontWeight.Bold)
-                            Text(sizeText, style = MaterialTheme.typography.labelSmall)
-                        }
-                    },
-                )
+                Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+                    Text(tag.name, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyLarge)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        sizeText,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
             }
         }
     }
@@ -289,9 +295,9 @@ fun TagsTabContent(tags: List<DockerTag>) {
 
 private fun formatCount(count: Long): String {
     return if (count >= 1000000) {
-        String.format("%.1fM", count / 1000000.0)
+        String.format(Locale.US, "%.1fM", count / 1000000.0)
     } else if (count >= 1000) {
-        String.format("%.1fK", count / 1000.0)
+        String.format(Locale.US, "%.1fK", count / 1000.0)
     } else {
         count.toString()
     }
@@ -301,7 +307,7 @@ private fun formatIsoDate(isoString: String?): String {
     if (isoString.isNullOrBlank()) return "Unknown"
     return try {
         val instant = Instant.parse(isoString)
-        val formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy").withZone(ZoneId.systemDefault())
+        val formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy", Locale.US).withZone(ZoneId.systemDefault())
         formatter.format(instant)
     } catch (e: Exception) {
         isoString
