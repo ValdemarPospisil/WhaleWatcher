@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ImageDao {
-
     @Query("SELECT * FROM docker_images WHERE is_favorite = 1 ORDER BY last_updated DESC")
     fun getFavorites(): Flow<List<DockerImageEntity>>
 
@@ -20,9 +19,17 @@ interface ImageDao {
     @Delete
     suspend fun delete(image: DockerImageEntity)
 
-    @Query("SELECT EXISTS(SELECT * FROM docker_images WHERE name = :name AND namespace = :namespace AND is_favorite = 1)")
-    suspend fun isFavorite(name: String, namespace: String): Boolean
+    @Query(
+        "SELECT EXISTS(SELECT * FROM docker_images WHERE name = :name AND namespace = :namespace AND is_favorite = 1)",
+    )
+    suspend fun isFavorite(
+        name: String,
+        namespace: String,
+    ): Boolean
 
     @Query("SELECT * FROM docker_images WHERE name = :name AND namespace = :namespace LIMIT 1")
-    suspend fun getImage(name: String, namespace: String): DockerImageEntity?
+    suspend fun getImage(
+        name: String,
+        namespace: String,
+    ): DockerImageEntity?
 }

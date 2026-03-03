@@ -12,33 +12,37 @@ import javax.inject.Inject
 
 sealed class MainUiState {
     object Idle : MainUiState()
+
     object Loading : MainUiState()
+
     data class Success(val imageName: String) : MainUiState()
+
     data class Error(val message: String) : MainUiState()
 }
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val repository: DockerImageRepository
-) : ViewModel() {
+class MainViewModel
+    @Inject
+    constructor(
+        private val repository: DockerImageRepository,
+    ) : ViewModel() {
+        private val _uiState = MutableStateFlow<MainUiState>(MainUiState.Idle)
+        val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
-    private val _uiState = MutableStateFlow<MainUiState>(MainUiState.Idle)
-    val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
-
-    fun fetchImages() {
-        _uiState.value = MainUiState.Loading
-        viewModelScope.launch {
-            val result = repository.getRepositories("library")
-            result.onSuccess { response ->
-                val firstName = response.results.firstOrNull()?.name
-                if (firstName != null) {
-                    _uiState.value = MainUiState.Success(firstName)
-                } else {
-                    _uiState.value = MainUiState.Error("No images found")
+        fun fetchImages() {
+            _uiState.value = MainUiState.Loading
+            viewModelScope.launch {
+                val result = repository.getRepositories("library")
+                result.onSuccess { response ->
+                    val firstName = response.results.firstOrNull()?.name
+                    if (firstName != null) {
+                        _uiState.value = MainUiState.Success(firstName)
+                    } else {
+                        _uiState.value = MainUiState.Error("No images found")
+                    }
+                }.onFailure { error ->
+                    _uiState.value = MainUiState.Error(error.message ?: "Unknown error")
                 }
-            }.onFailure { error ->
-                _uiState.value = MainUiState.Error(error.message ?: "Unknown error")
             }
         }
     }
-}

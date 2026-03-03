@@ -132,27 +132,31 @@ Displays all Images contained within a specific List.
 ```
 
 ### Screen B: Image Detail Screen
-Shows full information about a specific Docker Image.
+**Purpose:** Shows full information about a specific Docker Image with tabs for Info and Tags.
 
 ```text
 +---------------------------------------+
-| [<-]  Image Details              [<3] |
+| [<-]  louislam/uptime-kuma       [<3] |
++---------------------------------------+
+|   [ Info ]            [ Tags ]        |
 +---------------------------------------+
 |                                       |
-|  louislam/uptime-kuma                 |
-|  -----------------------------------  |
-|  ★ 5.4k    ↓ 50M pulls                |
+|  [Private] [Active]                   |
 |                                       |
-|  > docker pull louislam/uptime-kuma   |
-|                              [Copy]   |
+|  Last Updated                         |
+|  Oct 24, 2023                         |
+|                                       |
+|  Registered: Jan 15, 2021             |
+|                                       |
+|  Pulls                 Stars          |
+|  50M                   5.4k           |
 |                                       |
 |  Description                          |
 |  Uptime Kuma is an easy-to-use self-  |
 |  hosted monitoring tool.              |
-|  ...                                  |
-|                                       |
 |                                       |
 |  [        Save to List...        ]    |
+|  [      View on Docker Hub       ]    |
 +---------------------------------------+
 ```
-*(Clicking "Save to List..." opens a Bottom Sheet to select which list to add the image to. Clicking the `<3` icon at the top instantly adds it to Favorites).*
+*(The "Tags" tab displays a grid of available tags with their sizes. "Save to List" opens a bottom sheet.)*
