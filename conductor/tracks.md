@@ -23,7 +23,7 @@
 
 ---
 
-- [ ] **Track: Implement image detail screen**
+- [x] **Track: Implement image detail screen**
 *Link: [./tracks/image_details_20260302/](./tracks/image_details_20260302/)*
 
 ---
