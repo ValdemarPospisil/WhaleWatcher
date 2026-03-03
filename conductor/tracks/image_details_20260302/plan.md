@@ -30,3 +30,6 @@
 - [x] Task: Documentation Update d926658
     - [ ] Update `docs/design/overview.md` with the new Image Detail Screen design.
 - [x] Task: Conductor - User Manual Verification 'Detail Screen' (Protocol in workflow.md) 3da9e32
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions ce30330
