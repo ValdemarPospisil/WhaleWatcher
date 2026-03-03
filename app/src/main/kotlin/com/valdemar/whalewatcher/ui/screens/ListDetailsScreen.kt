@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -32,11 +30,16 @@ import com.valdemar.whalewatcher.ui.models.DummyData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListDetailsScreen(listName: String, onNavigateBack: () -> Unit) {
+fun ListDetailsScreen(
+    listName: String,
+    onNavigateBack: () -> Unit,
+    onNavigateToImage: (String, String) -> Unit = { _, _ -> }
+) {
     // Resolve the category based on the listName from dummy data
-    val category = DummyData.systemCategories.find { it.title == listName }
-        ?: DummyData.customLists.find { it.title == listName }
-        ?: if (DummyData.favorites.title == listName) DummyData.favorites else null
+    val category =
+        DummyData.systemCategories.find { it.title == listName }
+            ?: DummyData.customLists.find { it.title == listName }
+            ?: if (DummyData.favorites.title == listName) DummyData.favorites else null
 
     Scaffold(
         topBar = {
@@ -47,31 +50,33 @@ fun ListDetailsScreen(listName: String, onNavigateBack: () -> Unit) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onBackground
-                )
+                colors =
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.background,
+                        titleContentColor = MaterialTheme.colorScheme.primary,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
+                    ),
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
     ) { innerPadding ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
         ) {
             if (category == null || category.images.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(
                         text = "No images found in this list.",
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             } else {
                 LazyColumn(
                     contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     items(category.images) { image ->
                         // Reuse our ImageCard but modify it to span full width for vertical list
@@ -79,7 +84,7 @@ fun ListDetailsScreen(listName: String, onNavigateBack: () -> Unit) {
                             ImageCard(
                                 image = image,
                                 modifier = Modifier.weight(1f),
-                                onClick = { /* Navigate to image details later */ }
+                                onClick = { onNavigateToImage(image.namespace, image.name) },
                             )
                         }
                     }

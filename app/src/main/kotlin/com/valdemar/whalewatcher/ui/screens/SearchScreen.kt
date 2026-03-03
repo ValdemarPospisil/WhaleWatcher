@@ -1,5 +1,6 @@
 package com.valdemar.whalewatcher.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,7 @@ fun SearchScreen(
     searchQuery: String = "",
     onQueryChange: (String) -> Unit = {},
     onLoadNextPage: () -> Unit = {},
+    onNavigateToImage: (String, String) -> Unit = { _, _ -> }
 ) {
     Column(
         modifier =
@@ -128,7 +130,18 @@ fun SearchScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     items(uiState.results) { item ->
-                        Text(text = item.repoName)
+                        Text(
+                            text = item.repoName,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    val parts = item.repoName.split("/")
+                                    val namespace = if (parts.size > 1) parts[0] else "library"
+                                    val name = if (parts.size > 1) parts[1] else parts[0]
+                                    onNavigateToImage(namespace, name)
+                                }
+                                .padding(vertical = 8.dp)
+                        )
                     }
                     if (uiState.isFetchingNextPage) {
                         item {
