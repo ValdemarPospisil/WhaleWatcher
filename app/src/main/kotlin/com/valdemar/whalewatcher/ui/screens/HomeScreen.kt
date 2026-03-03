@@ -25,10 +25,13 @@ import com.valdemar.whalewatcher.ui.models.DummyCategory
 import com.valdemar.whalewatcher.ui.models.DummyData
 
 @Composable
-fun HomeScreen(onNavigateToList: (String) -> Unit) {
+fun HomeScreen(
+    onNavigateToList: (String) -> Unit,
+    onNavigateToImage: (String, String) -> Unit = { _, _ -> },
+) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(vertical = 16.dp)
+        contentPadding = PaddingValues(vertical = 16.dp),
     ) {
         // App Header
         item {
@@ -37,7 +40,7 @@ fun HomeScreen(onNavigateToList: (String) -> Unit) {
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             )
             Spacer(modifier = Modifier.height(16.dp))
         }
@@ -47,7 +50,7 @@ fun HomeScreen(onNavigateToList: (String) -> Unit) {
             CategoryRow(
                 category = DummyData.favorites,
                 onViewAllClick = { onNavigateToList(DummyData.favorites.title) },
-                onImageClick = { /* Will navigate to image details later */ }
+                onImageClick = onNavigateToImage,
             )
             Spacer(modifier = Modifier.height(24.dp))
         }
@@ -57,7 +60,7 @@ fun HomeScreen(onNavigateToList: (String) -> Unit) {
             CategoryRow(
                 category = category,
                 onViewAllClick = { onNavigateToList(category.title) },
-                onImageClick = { /* Will navigate to image details later */ }
+                onImageClick = onNavigateToImage,
             )
             Spacer(modifier = Modifier.height(24.dp))
         }
@@ -68,39 +71,40 @@ fun HomeScreen(onNavigateToList: (String) -> Unit) {
 fun CategoryRow(
     category: DummyCategory,
     onViewAllClick: () -> Unit,
-    onImageClick: (String) -> Unit
+    onImageClick: (String, String) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = category.title,
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onBackground,
             )
             Text(
                 text = "View All",
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.clickable(onClick = onViewAllClick)
+                modifier = Modifier.clickable(onClick = onViewAllClick),
             )
         }
-        
+
         Spacer(modifier = Modifier.height(12.dp))
-        
+
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(category.images) { image ->
                 ImageCard(
                     image = image,
-                    onClick = { onImageClick(image.name) }
+                    onClick = { onImageClick(image.namespace, image.name) },
                 )
             }
         }

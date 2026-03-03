@@ -8,7 +8,7 @@ data class DockerRepositoryResponse(
     val count: Int,
     val next: String? = null,
     val previous: String? = null,
-    val results: List<DockerRepository>
+    val results: List<DockerRepository>,
 )
 
 @Serializable
@@ -21,5 +21,5 @@ data class DockerRepository(
     @SerialName("is_private") val isPrivate: Boolean? = null,
     @SerialName("star_count") val starCount: Long? = null,
     @SerialName("pull_count") val pullCount: Long? = null,
-    @SerialName("last_updated") val lastUpdated: String? = null
+    @SerialName("last_updated") val lastUpdated: String? = null,
 )
