@@ -23,3 +23,5 @@
 
 ---
 
+- [ ] **Track: Implement the favorite system**
+*Link: [./tracks/favorite_system_20260306/](./tracks/favorite_system_20260306/)*
