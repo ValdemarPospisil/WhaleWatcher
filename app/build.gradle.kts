@@ -99,7 +99,7 @@ dependencies {
     testImplementation(libs.mockwebserver)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.compose.ui.test.junit4)
-    debugImplementation(libs.compose.ui.test.manifest)
+    testImplementation(libs.compose.ui.test.manifest)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
