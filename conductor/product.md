@@ -92,15 +92,20 @@ The app uses a single-activity architecture with Jetpack Navigation Compose. The
 - **Data Source:** For Favorites and Custom Lists, data is fetched exclusively from the local Room Database (Offline support).
 
 ### Screen B: Image Detail Screen
-**Purpose:** Shows full information about a specific Docker Image.
-- **Content:**
-  - Top App Bar with Back button.
-  - Image Name (e.g., `louislam/uptime-kuma`) and Namespace.
-  - Stats: Star count and Pull count.
-  - "Docker Pull" command snippet with a "Copy to Clipboard" button.
-  - Full description (fetched from API).
-  - A prominent "Save to List" button.
-- **Behavior:** Clicking "Save to List" opens a Bottom Sheet allowing the user to select which List(s) (Favorites or any Custom List) to add the image to. There should also be a button directly on the image to instantly make it a favorite.
+**Purpose:** Shows full information about a specific Docker Image with tabs for Info and Tags.
+- **Content Structure (Tabs):**
+  - **Info Tab:**
+    - Top App Bar with Back button and Quick Favorite icon.
+    - Image Name (e.g., `louislam/uptime-kuma`) and Namespace.
+    - Prominent "Last Updated" date and "Registered" date.
+    - Stats: Star count and Pull count with emojis.
+    - Full description (fetched from API).
+    - Dynamic Indicators: "Private"/"Public" and status chips.
+  - **Tags Tab:**
+    - A vertical list of tags displaying tag name and size.
+  - **Floating Bottom Bar:**
+    - Floating buttons for "Save to List" and "View on Docker Hub".
+- **Behavior:** Clicking "Save to List" opens a Bottom Sheet allowing the user to select which List(s) (Favorites or any Custom List) to add the image to. The Docker Hub button navigates to the official webpage.
 
 ## Core Architecture: The Unified List System & API Rate Limiting
 1. **Unified Lists:** The local Room database must handle both "System Categories" (pre-defined handpicked lists like `networking`, `dev tools`) and "User Custom Wishlists" using the same underlying database entity (e.g., `Wishlist` with a boolean flag `isPredefined`).

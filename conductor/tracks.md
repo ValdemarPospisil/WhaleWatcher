@@ -20,3 +20,8 @@
 
 - [x] **Track: Scaffold the main UI of the WhaleWatcher app using Jetpack Compose, including the Deep Ocean theme, Bottom Navigation Bar, and dummy-data populated Home, Search, Library, and List Details screens.**
 *Link: [./tracks/main_ui_scaffold_20260228/](./tracks/main_ui_scaffold_20260228/)*
+
+---
+
+- [ ] **Track: Implement the favorite system**
+*Link: [./tracks/favorite_system_20260306/](./tracks/favorite_system_20260306/)*
