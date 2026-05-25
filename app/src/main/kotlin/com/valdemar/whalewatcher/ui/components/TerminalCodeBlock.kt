@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ContentCopy
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -56,10 +53,10 @@ fun TerminalCodeBlock(
             
             Spacer(modifier = Modifier.padding(horizontal = 8.dp))
             
-            Icon(
-                imageVector = Icons.Default.ContentCopy,
-                contentDescription = "Copy to clipboard",
-                tint = Color(0xFF94A3B8),
+            Text(
+                text = "Copy",
+                style = MaterialTheme.typography.labelSmall,
+                color = Color(0xFF94A3B8),
                 modifier = Modifier
                     .clickable(onClick = onCopyClick)
                     .padding(4.dp)
