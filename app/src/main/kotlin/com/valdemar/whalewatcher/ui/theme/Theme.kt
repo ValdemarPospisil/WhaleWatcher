@@ -11,38 +11,59 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DeepOceanColorScheme = darkColorScheme(
-    primary = DeepOceanPrimary,
-    secondary = DeepOceanSecondary,
-    background = DeepOceanBackground,
-    surface = DeepOceanSurface,
-    onPrimary = DeepOceanText,
-    onSecondary = DeepOceanBackground,
-    onBackground = DeepOceanText,
-    onSurface = DeepOceanText,
+private val WhaleWatcherDarkColorScheme = darkColorScheme(
+    primary = DarkPrimary,
+    secondary = DarkSecondary,
+    background = DarkBackground,
+    surface = DarkSurface,
+    onPrimary = DarkText,
+    onSecondary = DarkBackground,
+    onBackground = DarkText,
+    onSurface = DarkText,
     error = ErrorRed,
-    onError = DeepOceanText,
-    surfaceVariant = DeepOceanSurface,
-    onSurfaceVariant = DeepOceanTextSecondary
+    onError = DarkText,
+    surfaceVariant = DarkSurfaceVariant,
+    onSurfaceVariant = DarkTextSecondary
 )
 
-// We force the dark theme for the "Deep Ocean" aesthetic regardless of system settings for now
+private val WhaleWatcherLightColorScheme = lightColorScheme(
+    primary = LightPrimary,
+    secondary = LightSecondary,
+    background = LightBackground,
+    surface = LightSurface,
+    onPrimary = LightSurface,
+    onSecondary = LightText,
+    onBackground = LightText,
+    onSurface = LightText,
+    error = ErrorRed,
+    onError = LightSurface,
+    surfaceVariant = LightSurfaceVariant,
+    onSurfaceVariant = LightTextSecondary
+)
+
 @Composable
 fun WhaleWatcherTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = DeepOceanColorScheme
+    val colorScheme = if (darkTheme) {
+        WhaleWatcherDarkColorScheme
+    } else {
+        WhaleWatcherLightColorScheme
+    }
+    
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.background.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
+        typography = Typography, // Will be defined in Type.kt
         content = content
     )
 }

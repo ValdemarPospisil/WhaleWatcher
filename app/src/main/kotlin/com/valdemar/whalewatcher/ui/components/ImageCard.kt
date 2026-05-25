@@ -45,7 +45,7 @@ fun ImageCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = "${image.namespace}/",
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(modifier = Modifier.weight(1f))
@@ -58,7 +58,7 @@ fun ImageCard(
             }
             Text(
                 text = image.name,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = androidx.compose.ui.text.font.FontWeight.Bold),
                 color = MaterialTheme.colorScheme.primary,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis

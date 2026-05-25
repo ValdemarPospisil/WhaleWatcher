@@ -74,13 +74,46 @@ fun ListDetailsScreen(listName: String, onNavigateBack: () -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(category.images) { image ->
-                        // Reuse our ImageCard but modify it to span full width for vertical list
-                        Row(modifier = Modifier.fillMaxWidth()) {
-                            ImageCard(
-                                image = image,
-                                modifier = Modifier.weight(1f),
-                                onClick = { /* Navigate to image details later */ }
-                            )
+                        androidx.compose.material3.Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { /* Navigate to image details */ },
+                            colors = androidx.compose.material3.CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                            ),
+                            elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = 2.dp)
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(
+                                        text = "${image.namespace}/",
+                                        style = MaterialTheme.typography.labelLarge,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        imageVector = Icons.Default.Star,
+                                        contentDescription = "Stars",
+                                        tint = androidx.compose.ui.graphics.Color(0xFFFBBF24),
+                                        modifier = Modifier.height(14.dp)
+                                    )
+                                    Text(
+                                        text = " ${image.starCount}",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                                Text(
+                                    text = image.name,
+                                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                
+                                com.valdemar.whalewatcher.ui.components.TerminalCodeBlock(
+                                    command = "docker pull ${if(image.namespace == "_") "" else image.namespace + "/"}${image.name}"
+                                )
+                            }
                         }
                     }
                 }
