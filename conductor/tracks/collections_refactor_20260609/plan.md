@@ -11,7 +11,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Setup, Gradle Config, and Refactoring' (Protocol in workflow.md) 4ebf533
 
 ## Phase 2: Database Schema & Pre-population
-- [ ] Task: Write Database Entity & DAO Unit Tests (Red)
+- [~] Task: Write Database Entity & DAO Unit Tests (Red)
     - [ ] Write tests verifying database pre-population.
     - [ ] Write tests for inserting, updating, and deleting collections.
     - [ ] Write tests for mapping images to collections.

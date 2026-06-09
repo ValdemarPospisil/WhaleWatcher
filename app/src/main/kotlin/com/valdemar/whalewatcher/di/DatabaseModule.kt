@@ -3,6 +3,7 @@ package com.valdemar.whalewatcher.di
 import android.content.Context
 import androidx.room.Room
 import com.valdemar.whalewatcher.data.local.AppDatabase
+import com.valdemar.whalewatcher.data.local.dao.CollectionDao
 import com.valdemar.whalewatcher.data.local.dao.ImageDao
 import dagger.Module
 import dagger.Provides
@@ -24,6 +25,7 @@ object DatabaseModule {
             AppDatabase::class.java,
             AppDatabase.DATABASE_NAME,
         )
+            .addCallback(AppDatabase.PrepopulateCallback())
             .fallbackToDestructiveMigration()
             .build()
     }
@@ -31,5 +33,10 @@ object DatabaseModule {
     @Provides
     fun provideImageDao(database: AppDatabase): ImageDao {
         return database.imageDao()
+    }
+
+    @Provides
+    fun provideCollectionDao(database: AppDatabase): CollectionDao {
+        return database.collectionDao()
     }
 }
