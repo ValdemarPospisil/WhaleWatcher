@@ -25,3 +25,8 @@
 
 - [ ] **Track: Implement the favorite system**
 *Link: [./tracks/favorite_system_20260306/](./tracks/favorite_system_20260306/)*
+
+---
+
+- [ ] **Track: Implement a database-persistent Collections (Library) and Favorites system, renaming all occurrences of Library to Collections, supporting custom collection creation with custom description/icon selection, and pre-populating system categories.**
+*Link: [./tracks/collections_refactor_20260609/](./tracks/collections_refactor_20260609/)*
