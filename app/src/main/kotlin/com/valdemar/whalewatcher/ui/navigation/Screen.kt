@@ -16,7 +16,7 @@ sealed class Screen(
 
     object Search : Screen("search", android.R.string.search_go, Icons.Filled.Search)
 
-    object Library : Screen("library", android.R.string.copy, Icons.AutoMirrored.Filled.List)
+    object Collections : Screen("collections", android.R.string.copy, Icons.AutoMirrored.Filled.List)
 
     // Secondary screens
     object ListDetails : Screen("list_details/{listName}") {
@@ -35,5 +35,5 @@ val BottomNavScreens =
     listOf(
         Screen.Home,
         Screen.Search,
-        Screen.Library,
+        Screen.Collections,
     )

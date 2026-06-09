@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.valdemar.whalewatcher.ui.models.DummyData
 
 @Composable
-fun LibraryScreen(onNavigateToList: (String) -> Unit) {
+fun CollectionsScreen(onNavigateToList: (String) -> Unit) {
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -52,7 +52,7 @@ fun LibraryScreen(onNavigateToList: (String) -> Unit) {
         ) {
             item {
                 Text(
-                    text = "Library",
+                    text = "Collections",
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary,
@@ -63,7 +63,7 @@ fun LibraryScreen(onNavigateToList: (String) -> Unit) {
 
             // Favorites (Fixed at top)
             item {
-                LibraryListItem(
+                CollectionsListItem(
                     title = DummyData.favorites.title,
                     icon = Icons.Default.Favorite,
                     iconTint = MaterialTheme.colorScheme.error,
@@ -77,7 +77,7 @@ fun LibraryScreen(onNavigateToList: (String) -> Unit) {
 
             // Custom Lists
             items(DummyData.customLists) { customList ->
-                LibraryListItem(
+                CollectionsListItem(
                     title = customList.title,
                     icon = Icons.AutoMirrored.Filled.List,
                     iconTint = MaterialTheme.colorScheme.secondary,
@@ -89,7 +89,7 @@ fun LibraryScreen(onNavigateToList: (String) -> Unit) {
 }
 
 @Composable
-fun LibraryListItem(
+fun CollectionsListItem(
     title: String,
     icon: ImageVector,
     iconTint: androidx.compose.ui.graphics.Color,

@@ -21,7 +21,7 @@ import com.valdemar.whalewatcher.ui.navigation.BottomNavigationBar
 import com.valdemar.whalewatcher.ui.navigation.Screen
 import com.valdemar.whalewatcher.ui.screens.HomeScreen
 import com.valdemar.whalewatcher.ui.screens.ImageDetailScreen
-import com.valdemar.whalewatcher.ui.screens.LibraryScreen
+import com.valdemar.whalewatcher.ui.screens.CollectionsScreen
 import com.valdemar.whalewatcher.ui.screens.ListDetailsScreen
 import com.valdemar.whalewatcher.ui.screens.SearchScreen
 import com.valdemar.whalewatcher.ui.theme.WhaleWatcherTheme
@@ -55,7 +55,7 @@ fun WhaleWatcherApp() {
             listOf(
                 Screen.Home.route,
                 Screen.Search.route,
-                Screen.Library.route,
+                Screen.Collections.route,
             )
 
     Scaffold(
@@ -95,8 +95,8 @@ fun WhaleWatcherApp() {
                     },
                 )
             }
-            composable(Screen.Library.route) {
-                LibraryScreen(
+            composable(Screen.Collections.route) {
+                CollectionsScreen(
                     onNavigateToList = { listName ->
                         navController.navigate(Screen.ListDetails.createRoute(listName))
                     },
