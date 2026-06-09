@@ -1,6 +1,6 @@
 # Implementation Plan: Collections Management and Favorites Refactoring
 
-## Phase 1: Setup, Gradle Config, and Refactoring
+## Phase 1: Setup, Gradle Config, and Refactoring [checkpoint: 4ebf533]
 - [x] Task: Configure Gradle Heap Size and Dependencies 108e89e
     - [x] Add `org.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m` to `gradle.properties`.
     - [x] Add `implementation("androidx.compose.material:material-icons-extended")` to `app/build.gradle.kts`.
@@ -8,7 +8,7 @@
     - [x] Rename `LibraryScreen.kt` to `CollectionsScreen.kt` and refactor class name.
     - [x] Update Navigation routes and Bottom Navigation labels to use "Collections" instead of "Library".
     - [x] Rename packages, directories, and other code symbols as necessary.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Setup, Gradle Config, and Refactoring' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Setup, Gradle Config, and Refactoring' (Protocol in workflow.md) 4ebf533
 
 ## Phase 2: Database Schema & Pre-population
 - [ ] Task: Write Database Entity & DAO Unit Tests (Red)
