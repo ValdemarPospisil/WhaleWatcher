@@ -29,6 +29,7 @@ class ImageDetailViewModelTest {
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         repository = mockk()
+        coEvery { repository.isFavorite(any(), any()) } returns false
         viewModel = ImageDetailViewModel(repository)
     }
 
@@ -108,6 +109,7 @@ class ImageDetailViewModelTest {
         val mockRepoInfo = RepositoryInfo(name = "nginx", namespace = "library", description = "desc", pullCount = 100L, starCount = 5L)
         coEvery { repository.getImageDetails("library", "nginx") } returns Result.success(mockRepoInfo)
         coEvery { repository.getImageTags("library", "nginx") } returns Result.success(DockerTagsResponse(count = 0, results = emptyList()))
+        coEvery { repository.isFavorite("nginx", "library") } returns false
         coEvery { repository.toggleFavorite(any()) } returns Unit
 
         viewModel.loadDetails("library", "nginx")

@@ -28,18 +28,29 @@ import androidx.compose.ui.unit.dp
 import com.valdemar.whalewatcher.ui.components.ImageCard
 import com.valdemar.whalewatcher.ui.models.DummyData
 
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.valdemar.whalewatcher.ui.ListDetailsViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListDetailsScreen(
-    listName: String,
+    listId: Long,
     onNavigateBack: () -> Unit,
     onNavigateToImage: (String, String) -> Unit = { _, _ -> },
+    viewModel: ListDetailsViewModel = hiltViewModel()
 ) {
-    // Resolve the category based on the listName from dummy data
-    val category =
-        DummyData.systemCategories.find { it.title == listName }
-            ?: DummyData.customLists.find { it.title == listName }
-            ?: if (DummyData.favorites.title == listName) DummyData.favorites else null
+    val collectionWithImages by viewModel.collectionState.collectAsState()
+
+    LaunchedEffect(listId) {
+        viewModel.loadCollection(listId)
+    }
+
+    val collection = collectionWithImages?.collection
+    val images = collectionWithImages?.images ?: emptyList()
+    val listName = collection?.name ?: "Loading..."
 
     Scaffold(
         topBar = {
@@ -50,26 +61,24 @@ fun ListDetailsScreen(
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 },
-                colors =
-                    TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.background,
-                        titleContentColor = MaterialTheme.colorScheme.primary,
-                        navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
-                    ),
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
+                ),
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { innerPadding ->
         Column(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
         ) {
-            if (category == null || category.images.isEmpty()) {
+            if (images.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(
-                        text = "No images found in this list.",
+                        text = "No images found in this collection.",
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
@@ -78,11 +87,16 @@ fun ListDetailsScreen(
                     contentPadding = PaddingValues(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    items(category.images) { image ->
-                        // Reuse our ImageCard but modify it to span full width for vertical list
+                    items(images) { image ->
                         Row(modifier = Modifier.fillMaxWidth()) {
                             ImageCard(
-                                image = image,
+                                name = image.name,
+                                namespace = image.namespace,
+                                description = image.description,
+                                starCount = image.stars,
+                                pullCount = image.pullCount,
+                                isFavorite = image.isFavorite,
+                                onFavoriteClick = { viewModel.toggleFavorite(image) },
                                 modifier = Modifier.weight(1f),
                                 onClick = { onNavigateToImage(image.namespace, image.name) },
                             )

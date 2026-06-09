@@ -21,14 +21,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.valdemar.whalewatcher.ui.components.ImageCard
-import com.valdemar.whalewatcher.ui.models.DummyCategory
-import com.valdemar.whalewatcher.ui.models.DummyData
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.valdemar.whalewatcher.data.local.entities.CollectionWithImages
+import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
+import com.valdemar.whalewatcher.ui.HomeViewModel
 
 @Composable
 fun HomeScreen(
-    onNavigateToList: (String) -> Unit,
+    onNavigateToList: (Long) -> Unit,
     onNavigateToImage: (String, String) -> Unit = { _, _ -> },
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
+    val collectionsWithImages by viewModel.collectionsState.collectAsState()
+
+    val favorites = collectionsWithImages.firstOrNull { it.collection.isFavorite }
+    val systemCategories = collectionsWithImages.filter { it.collection.isSystem && !it.collection.isFavorite }
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(vertical = 16.dp),
@@ -46,44 +56,50 @@ fun HomeScreen(
         }
 
         // Favorites Row
-        item {
-            CategoryRow(
-                category = DummyData.favorites,
-                onViewAllClick = { onNavigateToList(DummyData.favorites.title) },
-                onImageClick = onNavigateToImage,
-            )
-            Spacer(modifier = Modifier.height(24.dp))
+        if (favorites != null && favorites.images.isNotEmpty()) {
+            item {
+                CategoryRow(
+                    collectionWithImages = favorites,
+                    onViewAllClick = { onNavigateToList(favorites.collection.id) },
+                    onImageClick = onNavigateToImage,
+                    onFavoriteClick = { viewModel.toggleFavorite(it) }
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+            }
         }
 
         // System Categories
-        items(DummyData.systemCategories) { category ->
-            CategoryRow(
-                category = category,
-                onViewAllClick = { onNavigateToList(category.title) },
-                onImageClick = onNavigateToImage,
-            )
-            Spacer(modifier = Modifier.height(24.dp))
+        items(systemCategories) { category ->
+            if (category.images.isNotEmpty()) {
+                CategoryRow(
+                    collectionWithImages = category,
+                    onViewAllClick = { onNavigateToList(category.collection.id) },
+                    onImageClick = onNavigateToImage,
+                    onFavoriteClick = { viewModel.toggleFavorite(it) }
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+            }
         }
     }
 }
 
 @Composable
 fun CategoryRow(
-    category: DummyCategory,
+    collectionWithImages: CollectionWithImages,
     onViewAllClick: () -> Unit,
     onImageClick: (String, String) -> Unit,
+    onFavoriteClick: (DockerImageEntity) -> Unit
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = category.title,
+                text = collectionWithImages.collection.name,
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onBackground,
             )
@@ -101,9 +117,15 @@ fun CategoryRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            items(category.images) { image ->
+            items(collectionWithImages.images) { image ->
                 ImageCard(
-                    image = image,
+                    name = image.name,
+                    namespace = image.namespace,
+                    description = image.description,
+                    starCount = image.stars,
+                    pullCount = image.pullCount,
+                    isFavorite = image.isFavorite,
+                    onFavoriteClick = { onFavoriteClick(image) },
                     onClick = { onImageClick(image.namespace, image.name) },
                 )
             }

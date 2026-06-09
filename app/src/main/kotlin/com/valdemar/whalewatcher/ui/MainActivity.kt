@@ -72,8 +72,8 @@ fun WhaleWatcherApp() {
         ) {
             composable(Screen.Home.route) {
                 HomeScreen(
-                    onNavigateToList = { listName ->
-                        navController.navigate(Screen.ListDetails.createRoute(listName))
+                    onNavigateToList = { listId ->
+                        navController.navigate(Screen.ListDetails.createRoute(listId.toString()))
                     },
                     onNavigateToImage = { namespace, name ->
                         navController.navigate(Screen.ImageDetail.createRoute(namespace, name))
@@ -97,8 +97,8 @@ fun WhaleWatcherApp() {
             }
             composable(Screen.Collections.route) {
                 CollectionsScreen(
-                    onNavigateToList = { listName ->
-                        navController.navigate(Screen.ListDetails.createRoute(listName))
+                    onNavigateToList = { listId ->
+                        navController.navigate(Screen.ListDetails.createRoute(listId.toString()))
                     },
                 )
             }
@@ -106,9 +106,10 @@ fun WhaleWatcherApp() {
                 route = Screen.ListDetails.route,
                 arguments = listOf(navArgument("listName") { type = NavType.StringType }),
             ) { backStackEntry ->
-                val listName = backStackEntry.arguments?.getString("listName") ?: ""
+                val listIdString = backStackEntry.arguments?.getString("listName") ?: ""
+                val listId = listIdString.toLongOrNull() ?: 0L
                 ListDetailsScreen(
-                    listName = listName,
+                    listId = listId,
                     onNavigateBack = { navController.popBackStack() },
                     onNavigateToImage = { namespace, name ->
                         navController.navigate(Screen.ImageDetail.createRoute(namespace, name))

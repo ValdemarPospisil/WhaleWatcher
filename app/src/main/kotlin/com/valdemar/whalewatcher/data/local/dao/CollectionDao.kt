@@ -20,6 +20,9 @@ interface CollectionDao {
     @Query("SELECT * FROM collections WHERE id = :id LIMIT 1")
     suspend fun getCollectionById(id: Long): CollectionEntity?
 
+    @Query("SELECT * FROM collections WHERE is_favorite = 1 LIMIT 1")
+    suspend fun getFavoritesCollection(): CollectionEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCollection(collection: CollectionEntity): Long
 
@@ -41,4 +44,8 @@ interface CollectionDao {
     @Transaction
     @Query("SELECT * FROM collections WHERE id = :id")
     fun getCollectionWithImages(id: Long): Flow<CollectionWithImages>
+
+    @Transaction
+    @Query("SELECT * FROM collections ORDER BY is_system DESC, name ASC")
+    fun getAllCollectionsWithImages(): Flow<List<CollectionWithImages>>
 }

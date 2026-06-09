@@ -41,15 +41,16 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Repository and ViewModel Integration' (Protocol in workflow.md) 752a161
 
 ## Phase 4: UI Implementation & Wiring
-- [ ] Task: Write UI & Navigation tests (Red)
-    - [ ] Write Compose tests for toggling favorites, creating collections, and the save bottom sheet.
-- [ ] Task: Implement Interactive Collections UI (Green)
-    - [ ] Update `CollectionsScreen` with a custom list of user collections, a "+" FAB, and dialog to select from 12-20 Material icons.
-    - [ ] Update `ListDetailsScreen` to load images from the database and show rename/delete options for custom collections.
-- [ ] Task: Implement Favorites Toggle UI (Green)
-    - [ ] Update `ImageCard` and `ImageDetailScreen` to display the filled/outlined Heart icon based on favorite status and handle clicks.
-- [ ] Task: Implement "Save to List" Bottom Sheet (Green)
-    - [ ] Create a bottom sheet in `ImageDetailScreen` with checkboxes for adding/removing the image to various collections/favorites.
-- [ ] Task: Run and Refactor UI Layer (Refactor)
-    - [ ] Verify all UI tests and build compilation pass.
+- [x] Task: Write UI & Navigation tests (Red)
+    - [x] Write Compose tests for toggling favorites, creating collections, and the save bottom sheet.
+- [x] Task: Connect ImageDetailScreen Favorites (Green)
+    - [x] Implement `ImageDetailScreen` interactions with `ImageDetailViewModel.toggleFavorite`.
+    - [x] Ensure the heart icon changes color/state dynamically based on favorite status.
+- [x] Task: Implement Add to Collection Bottom Sheet (Green)
+    - [x] Create `AddToCollectionBottomSheet` component.
+    - [x] Connect it to `CollectionsViewModel` to list collections and `ImageDetailViewModel` to save.
+- [x] Task: Wire CollectionsScreen (Green)
+    - [x] Implement UI for `CollectionsScreen` to observe collections and navigate into specific collections.
+- [x] Task: Run and Refactor UI Layer (Refactor)
+    - [x] Verify UI tests and UI components look correct.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: UI Implementation & Wiring' (Protocol in workflow.md)

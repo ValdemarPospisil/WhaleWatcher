@@ -2,24 +2,24 @@ package com.valdemar.whalewatcher.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.valdemar.whalewatcher.data.local.entities.CollectionEntity
+import com.valdemar.whalewatcher.data.local.entities.CollectionWithImages
+import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
 import com.valdemar.whalewatcher.data.repository.DockerImageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CollectionsViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val repository: DockerImageRepository
 ) : ViewModel() {
 
-    private val _collectionsState = MutableStateFlow<List<CollectionEntity>>(emptyList())
-    val collectionsState: StateFlow<List<CollectionEntity>> = _collectionsState.asStateFlow()
+    private val _collectionsState = MutableStateFlow<List<CollectionWithImages>>(emptyList())
+    val collectionsState: StateFlow<List<CollectionWithImages>> = _collectionsState.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -30,10 +30,7 @@ class CollectionsViewModel @Inject constructor(
 
     private fun loadCollections() {
         viewModelScope.launch {
-            repository.getAllCollections()
-                .map { collections ->
-                    collections.filter { it.isFavorite || !it.isSystem }
-                }
+            repository.getAllCollectionsWithImages()
                 .catch { e ->
                     // Handle error if needed
                 }
@@ -43,9 +40,9 @@ class CollectionsViewModel @Inject constructor(
         }
     }
 
-    fun createCollection(name: String, description: String, iconName: String) {
+    fun toggleFavorite(image: DockerImageEntity) {
         viewModelScope.launch {
-            repository.createCollection(name, description, iconName)
+            repository.toggleFavorite(image)
         }
     }
 }

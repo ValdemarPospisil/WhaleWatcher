@@ -18,7 +18,7 @@ sealed class ImageDetailUiState {
 
     object Loading : ImageDetailUiState()
 
-    data class Success(val repositoryInfo: RepositoryInfo, val tags: List<DockerTag>) : ImageDetailUiState()
+    data class Success(val repositoryInfo: RepositoryInfo, val tags: List<DockerTag>, val isFavorite: Boolean = false) : ImageDetailUiState()
 
     data class Error(val message: String) : ImageDetailUiState()
 }
@@ -57,10 +57,13 @@ class ImageDetailViewModel
                     return@launch
                 }
 
+                val isFav = repository.isFavorite(repositoryName, namespace)
+
                 _uiState.value =
                     ImageDetailUiState.Success(
                         repositoryInfo = detailsResult.getOrNull()!!,
                         tags = tagsResult.getOrNull()?.results ?: emptyList(),
+                        isFavorite = isFav
                     )
             }
         }
@@ -78,7 +81,27 @@ class ImageDetailViewModel
                         stars = info.starCount.toInt(),
                         isFavorite = false // repository will fetch existing to toggle
                     )
+                    val isFavNow = !state.isFavorite
                     repository.toggleFavorite(image)
+                    _uiState.value = state.copy(isFavorite = isFavNow)
+                }
+            }
+        }
+
+        fun addToCollection(collectionId: Long) {
+            val state = _uiState.value
+            if (state is ImageDetailUiState.Success) {
+                viewModelScope.launch {
+                    val info = state.repositoryInfo
+                    val image = DockerImageEntity(
+                        name = info.name,
+                        namespace = info.namespace,
+                        description = info.description ?: "",
+                        pullCount = info.pullCount.toString(),
+                        stars = info.starCount.toInt(),
+                        isFavorite = state.isFavorite
+                    )
+                    repository.addImageToCollection(image, collectionId)
                 }
             }
         }

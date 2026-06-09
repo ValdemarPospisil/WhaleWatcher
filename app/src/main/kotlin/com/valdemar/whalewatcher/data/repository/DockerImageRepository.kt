@@ -68,6 +68,23 @@ class DockerImageRepository @Inject constructor(
         return collectionDao.getCollectionWithImages(id)
     }
 
+    fun getAllCollectionsWithImages(): Flow<List<CollectionWithImages>> {
+        return collectionDao.getAllCollectionsWithImages()
+    }
+
+    suspend fun ensureFavoritesCollectionExists() {
+        if (collectionDao.getFavoritesCollection() == null) {
+            val entity = CollectionEntity(
+                name = "Favorites",
+                description = "Your favorite images",
+                iconName = "Favorite",
+                isSystem = true,
+                isFavorite = true
+            )
+            collectionDao.insertCollection(entity)
+        }
+    }
+
     suspend fun createCollection(name: String, description: String, iconName: String) {
         val entity = CollectionEntity(
             name = name,
@@ -84,11 +101,28 @@ class DockerImageRepository @Inject constructor(
         val isFav = existing?.isFavorite ?: false
         val updated = image.copy(isFavorite = !isFav)
         imageDao.insert(updated)
+
+        ensureFavoritesCollectionExists()
+        val favoritesCollection = collectionDao.getFavoritesCollection()
+        if (favoritesCollection != null) {
+            val crossRef = CollectionImageCrossRef(favoritesCollection.id, image.name)
+            if (!isFav) {
+                // Was not favorite, now is favorite -> Add to collection
+                collectionDao.insertCollectionImageCrossRef(crossRef)
+            } else {
+                // Was favorite, now is not -> Remove from collection
+                collectionDao.deleteCollectionImageCrossRef(crossRef)
+            }
+        }
     }
 
     suspend fun addImageToCollection(image: DockerImageEntity, collectionId: Long) {
         imageDao.insert(image)
         val crossRef = CollectionImageCrossRef(collectionId, image.name)
         collectionDao.insertCollectionImageCrossRef(crossRef)
+    }
+
+    suspend fun isFavorite(name: String, namespace: String): Boolean {
+        return imageDao.isFavorite(name, namespace)
     }
 }

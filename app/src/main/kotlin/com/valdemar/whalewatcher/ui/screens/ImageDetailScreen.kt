@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.BottomAppBar
@@ -41,9 +42,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import kotlinx.coroutines.launch
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -58,6 +64,9 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
+import com.valdemar.whalewatcher.ui.components.AddToCollectionBottomSheet
+import com.valdemar.whalewatcher.ui.CollectionsViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ImageDetailScreen(
@@ -65,15 +74,58 @@ fun ImageDetailScreen(
     repository: String,
     onNavigateBack: () -> Unit = {},
     viewModel: ImageDetailViewModel = hiltViewModel(),
+    collectionsViewModel: CollectionsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    var selectedTabIndex by remember { mutableIntStateOf(0) }
-    val tabs = listOf("Info", "Tags")
-    val context = LocalContext.current
+    val collections by collectionsViewModel.collectionsState.collectAsState()
+    var showBottomSheet by remember { mutableStateOf(false) }
 
     LaunchedEffect(namespace, repository) {
         viewModel.loadDetails(namespace, repository)
     }
+
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+
+    if (showBottomSheet) {
+        AddToCollectionBottomSheet(
+            collections = collections,
+            onDismiss = { showBottomSheet = false },
+            onCollectionSelected = { collectionId ->
+                viewModel.addToCollection(collectionId)
+                showBottomSheet = false
+                coroutineScope.launch {
+                    snackbarHostState.showSnackbar("Saved to collection")
+                }
+            }
+        )
+    }
+
+    ImageDetailScreen(
+        uiState = uiState,
+        namespace = namespace,
+        repository = repository,
+        onNavigateBack = onNavigateBack,
+        onToggleFavorite = { viewModel.toggleFavorite() },
+        onAddToCollection = { showBottomSheet = true },
+        snackbarHostState = snackbarHostState
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ImageDetailScreen(
+    uiState: ImageDetailUiState,
+    namespace: String,
+    repository: String,
+    onNavigateBack: () -> Unit,
+    onToggleFavorite: () -> Unit,
+    onAddToCollection: () -> Unit,
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
+) {
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
+    val tabs = listOf("Info", "Tags")
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -85,8 +137,13 @@ fun ImageDetailScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* Handle quick favorite */ }) {
-                        Icon(Icons.Default.FavoriteBorder, contentDescription = "Favorite")
+                    IconButton(onClick = onToggleFavorite) {
+                        val isFav = if (uiState is ImageDetailUiState.Success) uiState.isFavorite else false
+                        Icon(
+                            if (isFav) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = "Favorite",
+                            tint = if (isFav) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onBackground
+                        )
                     }
                 },
                 colors =
@@ -97,6 +154,7 @@ fun ImageDetailScreen(
                     ),
             )
         },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
             if (uiState is ImageDetailUiState.Success) {
                 BottomAppBar(
@@ -107,7 +165,7 @@ fun ImageDetailScreen(
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        IconButton(onClick = { /* Will open bottom sheet */ }) {
+                        IconButton(onClick = onAddToCollection) {
                             Text("💾", style = MaterialTheme.typography.headlineMedium)
                         }
                         IconButton(
