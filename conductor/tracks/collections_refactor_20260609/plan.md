@@ -26,7 +26,7 @@
     - [x] Verify database unit tests pass.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Database Schema & Pre-population' (Protocol in workflow.md) 7a0dabb
 
-## Phase 3: Repository and ViewModel Integration
+## Phase 3: Repository and ViewModel Integration [checkpoint: 752a161]
 - [x] Task: Write Repository & ViewModel Unit Tests (Red) 4085baa
     - [x] Write tests for observing collections, favorites, and list contents.
     - [x] Write tests for toggling favorites and saving images to collections.
@@ -38,7 +38,7 @@
     - [x] Update `ImageDetailViewModel` to expose favorite status and handle list/collection selections.
 - [x] Task: Run and Refactor Integration Layer (Refactor) 4085baa
     - [x] Verify Repository and ViewModel unit tests pass.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Repository and ViewModel Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Repository and ViewModel Integration' (Protocol in workflow.md) 752a161
 
 ## Phase 4: UI Implementation & Wiring
 - [ ] Task: Write UI & Navigation tests (Red)
