@@ -18,12 +18,16 @@ import org.junit.Test
 
 class DockerImageRepositoryTest {
     private lateinit var api: DockerHubApi
+    private lateinit var imageDao: com.valdemar.whalewatcher.data.local.dao.ImageDao
+    private lateinit var collectionDao: com.valdemar.whalewatcher.data.local.dao.CollectionDao
     private lateinit var repository: DockerImageRepository
 
     @Before
     fun setup() {
         api = mockk()
-        repository = DockerImageRepository(api)
+        imageDao = mockk(relaxed = true)
+        collectionDao = mockk(relaxed = true)
+        repository = DockerImageRepository(api, imageDao, collectionDao)
     }
 
     @Test
@@ -150,4 +154,44 @@ class DockerImageRepositoryTest {
             assertTrue(result.isFailure)
             assertEquals(exception, result.exceptionOrNull())
         }
+    @Test
+    fun getCollections_returnsFlowFromDao() = runBlocking {
+        val collectionsFlow = kotlinx.coroutines.flow.flowOf(emptyList<com.valdemar.whalewatcher.data.local.entities.CollectionEntity>())
+        io.mockk.coEvery { collectionDao.getAllCollections() } returns collectionsFlow
+
+        val result = repository.getAllCollections()
+
+        assertEquals(collectionsFlow, result)
+    }
+
+    @Test
+    fun createCollection_callsDao() = runBlocking {
+        io.mockk.coEvery { collectionDao.insertCollection(any()) } returns 1L
+
+        repository.createCollection("Test", "Desc", "Icon")
+
+        io.mockk.coVerify {
+            collectionDao.insertCollection(match { it.name == "Test" && it.description == "Desc" })
+        }
+    }
+
+    @Test
+    fun toggleFavorite_callsDao() = runBlocking {
+        val image = com.valdemar.whalewatcher.data.local.entities.DockerImageEntity(
+            name = "nginx",
+            namespace = "library",
+            description = "desc",
+            pullCount = "100",
+            stars = 5,
+            isFavorite = false
+        )
+        io.mockk.coEvery { imageDao.getImage("nginx", "library") } returns image
+        io.mockk.coEvery { imageDao.insert(any()) } returns Unit
+
+        repository.toggleFavorite(image)
+
+        io.mockk.coVerify {
+            imageDao.insert(match { it.isFavorite == true })
+        }
+    }
 }

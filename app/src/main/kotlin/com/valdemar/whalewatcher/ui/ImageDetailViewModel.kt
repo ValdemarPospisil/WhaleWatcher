@@ -2,6 +2,7 @@ package com.valdemar.whalewatcher.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
 import com.valdemar.whalewatcher.data.network.DockerTag
 import com.valdemar.whalewatcher.data.network.RepositoryInfo
 import com.valdemar.whalewatcher.data.repository.DockerImageRepository
@@ -61,6 +62,24 @@ class ImageDetailViewModel
                         repositoryInfo = detailsResult.getOrNull()!!,
                         tags = tagsResult.getOrNull()?.results ?: emptyList(),
                     )
+            }
+        }
+
+        fun toggleFavorite() {
+            val state = _uiState.value
+            if (state is ImageDetailUiState.Success) {
+                viewModelScope.launch {
+                    val info = state.repositoryInfo
+                    val image = DockerImageEntity(
+                        name = info.name,
+                        namespace = info.namespace,
+                        description = info.description ?: "",
+                        pullCount = info.pullCount.toString(),
+                        stars = info.starCount.toInt(),
+                        isFavorite = false // repository will fetch existing to toggle
+                    )
+                    repository.toggleFavorite(image)
+                }
             }
         }
     }

@@ -27,17 +27,17 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Database Schema & Pre-population' (Protocol in workflow.md) 7a0dabb
 
 ## Phase 3: Repository and ViewModel Integration
-- [ ] Task: Write Repository & ViewModel Unit Tests (Red)
-    - [ ] Write tests for observing collections, favorites, and list contents.
-    - [ ] Write tests for toggling favorites and saving images to collections.
-- [ ] Task: Implement Collections & Favorites Repository Logic (Green)
-    - [ ] Add collection management functions (fetch, create, rename, delete) to the repository layer.
-    - [ ] Add cross-reference mapping functions for adding/removing images in collections.
-- [ ] Task: Implement ViewModels Integration (Green)
-    - [ ] Update `MainViewModel` or create a new `CollectionsViewModel` to observe collections and categories.
-    - [ ] Update `ImageDetailViewModel` to expose favorite status and handle list/collection selections.
-- [ ] Task: Run and Refactor Repository & ViewModel Layer (Refactor)
-    - [ ] Verify repository and ViewModel tests pass.
+- [x] Task: Write Repository & ViewModel Unit Tests (Red) 4085baa
+    - [x] Write tests for observing collections, favorites, and list contents.
+    - [x] Write tests for toggling favorites and saving images to collections.
+- [x] Task: Implement Collections & Favorites Repository Logic (Green) 4085baa
+    - [x] Add collection management functions (fetch, create, rename, delete) to the repository layer.
+    - [x] Add cross-reference mapping functions for adding/removing images in collections.
+- [x] Task: Update ViewModel to Observe and Manage Collections (Green) 4085baa
+    - [x] Update `MainViewModel` or create a new `CollectionsViewModel` to observe collections and categories.
+    - [x] Update `ImageDetailViewModel` to expose favorite status and handle list/collection selections.
+- [x] Task: Run and Refactor Integration Layer (Refactor) 4085baa
+    - [x] Verify Repository and ViewModel unit tests pass.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Repository and ViewModel Integration' (Protocol in workflow.md)
 
 ## Phase 4: UI Implementation & Wiring

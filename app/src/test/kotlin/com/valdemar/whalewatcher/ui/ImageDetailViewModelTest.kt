@@ -103,4 +103,19 @@ class ImageDetailViewModelTest {
             val errorState = viewModel.uiState.value as ImageDetailUiState.Error
             assertEquals("Tags error", errorState.message)
         }
+    @Test
+    fun `toggleFavorite calls repository`() = runTest {
+        val mockRepoInfo = RepositoryInfo(name = "nginx", namespace = "library", description = "desc", pullCount = 100L, starCount = 5L)
+        coEvery { repository.getImageDetails("library", "nginx") } returns Result.success(mockRepoInfo)
+        coEvery { repository.getImageTags("library", "nginx") } returns Result.success(DockerTagsResponse(count = 0, results = emptyList()))
+        coEvery { repository.toggleFavorite(any()) } returns Unit
+
+        viewModel.loadDetails("library", "nginx")
+        advanceUntilIdle()
+
+        viewModel.toggleFavorite()
+        advanceUntilIdle()
+
+        io.mockk.coVerify { repository.toggleFavorite(any()) }
+    }
 }
