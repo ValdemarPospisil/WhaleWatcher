@@ -10,7 +10,7 @@
     - [x] Rename packages, directories, and other code symbols as necessary.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Setup, Gradle Config, and Refactoring' (Protocol in workflow.md) 4ebf533
 
-## Phase 2: Database Schema & Pre-population
+## Phase 2: Database Schema & Pre-population [checkpoint: 7a0dabb]
 - [x] Task: Write Database Entity & DAO Unit Tests (Red) f21ccba
     - [x] Write tests verifying database pre-population.
     - [x] Write tests for inserting, updating, and deleting collections.
@@ -24,7 +24,7 @@
     - [x] Implement Room database callback to pre-populate System Categories and Favorites collection on first launch.
 - [x] Task: Run and Refactor Database Layer (Refactor) f21ccba
     - [x] Verify database unit tests pass.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Database Schema & Pre-population' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Database Schema & Pre-population' (Protocol in workflow.md) 7a0dabb
 
 ## Phase 3: Repository and ViewModel Integration
 - [ ] Task: Write Repository & ViewModel Unit Tests (Red)
