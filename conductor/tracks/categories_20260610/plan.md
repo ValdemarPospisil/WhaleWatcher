@@ -1,0 +1,29 @@
+# Implementation Plan: Predefined System Categories
+
+## Phase 1: Data Layer Updates & Pre-population
+- [ ] Task: Update Category/List Room Entity (TDD)
+    - [ ] Sub-task: Write failing tests for category entity updates (description, iconName, isPredefined).
+    - [ ] Sub-task: Implement entity changes and Room database migrations.
+- [ ] Task: Create System Categories JSON Asset
+    - [ ] Sub-task: Generate JSON file with 10 categories and images.
+    - [ ] Sub-task: Place in `assets/` directory.
+- [ ] Task: Implement Database Pre-population logic (TDD)
+    - [ ] Sub-task: Write failing tests for initial pre-population logic.
+    - [ ] Sub-task: Implement JSON parsing and database insertion on first launch.
+- [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Layer Updates & Pre-population' (Protocol in workflow.md)
+
+## Phase 2: Home Page UI Updates
+- [ ] Task: Update Home Page View Model (TDD)
+    - [ ] Sub-task: Write failing tests for ViewModel fetching system categories.
+    - [ ] Sub-task: Implement ViewModel data flow from Repository.
+- [ ] Task: Implement Home Page Grid UI (TDD)
+    - [ ] Sub-task: Add `material-icons-extended` dependency if needed.
+    - [ ] Sub-task: Write Compose UI tests for the 2x5 grid of categories.
+    - [ ] Sub-task: Implement the Composable Grid UI with category icons.
+- [ ] Task: Conductor - User Manual Verification 'Phase 2: Home Page UI Updates' (Protocol in workflow.md)
+
+## Phase 3: List Detail Screen Updates
+- [ ] Task: Update List Detail Screen UI (TDD)
+    - [ ] Sub-task: Write Compose UI tests for header description visibility.
+    - [ ] Sub-task: Implement header description UI and hide edit/delete actions for predefined categories.
+- [ ] Task: Conductor - User Manual Verification 'Phase 3: List Detail Screen Updates' (Protocol in workflow.md)

@@ -30,3 +30,9 @@
 
 - [ ] **Track: Implement a database-persistent Collections (Library) and Favorites system, renaming all occurrences of Library to Collections, supporting custom collection creation with custom description/icon selection, and pre-populating system categories.**
 *Link: [./tracks/collections_refactor_20260609/](./tracks/collections_refactor_20260609/)*
+
+---
+
+- [ ] **Track: Add predefined system categories to the app, populated on first launch via JSON asset.**
+*Link: [./tracks/categories_20260610/](./tracks/categories_20260610/)*
+
