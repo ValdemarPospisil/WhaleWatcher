@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Databases",
+    "description": "Essential relational and NoSQL databases.",
+    "iconName": "Storage",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "postgres", "description": "The PostgreSQL object-relational database system.", "pullCount": "1B+", "stars": 15000 },
+      { "namespace": "library", "name": "mysql", "description": "MySQL is a widely used, open-source relational database management system.", "pullCount": "1B+", "stars": 14000 },
+      { "namespace": "library", "name": "mongo", "description": "MongoDB document databases provide high availability and easy scalability.", "pullCount": "1B+", "stars": 10000 },
+      { "namespace": "library", "name": "redis", "description": "Redis is an open source key-value store.", "pullCount": "1B+", "stars": 13000 },
+      { "namespace": "library", "name": "mariadb", "description": "MariaDB is a community-developed fork of MySQL.", "pullCount": "1B+", "stars": 5000 }
+    ]
+  },
+  {
+    "name": "Web Servers",
+    "description": "High-performance web servers and reverse proxies.",
+    "iconName": "Public",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "nginx", "description": "Official build of Nginx.", "pullCount": "1B+", "stars": 20000 },
+      { "namespace": "library", "name": "httpd", "description": "The Apache HTTP Server Project.", "pullCount": "1B+", "stars": 4500 },
+      { "namespace": "library", "name": "traefik", "description": "Traefik is a modern HTTP reverse proxy and load balancer.", "pullCount": "1B+", "stars": 3500 },
+      { "namespace": "library", "name": "haproxy", "description": "Reliable, high performance TCP/HTTP load balancer.", "pullCount": "500M+", "stars": 2000 },
+      { "namespace": "library", "name": "caddy", "description": "Fast, multi-platform web server with automatic HTTPS.", "pullCount": "100M+", "stars": 1500 }
+    ]
+  },
+  {
+    "name": "CI/CD",
+    "description": "Continuous integration and delivery platforms.",
+    "iconName": "Build",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "jenkins", "description": "Official Jenkins Docker image.", "pullCount": "100M+", "stars": 6000 },
+      { "namespace": "gitlab", "name": "gitlab-ce", "description": "GitLab Community Edition docker image.", "pullCount": "50M+", "stars": 4000 },
+      { "namespace": "gitea", "name": "gitea", "description": "Git with a cup of tea, painless self-hosted git service.", "pullCount": "100M+", "stars": 3000 },
+      { "namespace": "drone", "name": "drone", "description": "Drone is a Continuous Delivery system built on container technology.", "pullCount": "50M+", "stars": 1500 },
+      { "namespace": "library", "name": "sonarqube", "description": "SonarQube is an open-source platform for continuous inspection of code quality.", "pullCount": "500M+", "stars": 3500 }
+    ]
+  },
+  {
+    "name": "Monitoring",
+    "description": "Observability, metrics, and alerting tools.",
+    "iconName": "Analytics",
+    "isSystem": true,
+    "images": [
+      { "namespace": "prom", "name": "prometheus", "description": "The Prometheus monitoring system and time series database.", "pullCount": "500M+", "stars": 5000 },
+      { "namespace": "grafana", "name": "grafana", "description": "The open and composable observability and data visualization platform.", "pullCount": "500M+", "stars": 6000 },
+      { "namespace": "library", "name": "telegraf", "description": "The plugin-driven server agent for collecting & reporting metrics.", "pullCount": "500M+", "stars": 2000 },
+      { "namespace": "library", "name": "influxdb", "description": "Scalable datastore for metrics, events, and real-time analytics.", "pullCount": "100M+", "stars": 3000 },
+      { "namespace": "elastic", "name": "kibana", "description": "Kibana is your window into the Elastic Stack.", "pullCount": "100M+", "stars": 2500 }
+    ]
+  },
+  {
+    "name": "Security",
+    "description": "Identity, access management, and security scanners.",
+    "iconName": "Security",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "vault", "description": "Vault is a tool for securely accessing secrets.", "pullCount": "100M+", "stars": 3000 },
+      { "namespace": "keycloak", "name": "keycloak", "description": "Open Source Identity and Access Management.", "pullCount": "100M+", "stars": 2500 },
+      { "namespace": "aquasec", "name": "trivy", "description": "A Simple and Comprehensive Vulnerability Scanner for Containers.", "pullCount": "50M+", "stars": 1500 },
+      { "namespace": "owasp", "name": "zap2docker-stable", "description": "The OWASP Zed Attack Proxy (ZAP).", "pullCount": "10M+", "stars": 1000 },
+      { "namespace": "certbot", "name": "certbot", "description": "Automatically enable HTTPS on your website with EFF's Certbot.", "pullCount": "50M+", "stars": 1200 }
+    ]
+  },
+  {
+    "name": "Analytics",
+    "description": "Data processing and analytics engines.",
+    "iconName": "Insights",
+    "isSystem": true,
+    "images": [
+      { "namespace": "elastic", "name": "elasticsearch", "description": "Elasticsearch is a distributed, RESTful search and analytics engine.", "pullCount": "500M+", "stars": 8000 },
+      { "namespace": "library", "name": "logstash", "description": "Logstash is a free and open server-side data processing pipeline.", "pullCount": "100M+", "stars": 3000 },
+      { "namespace": "bitnami", "name": "spark", "description": "Apache Spark is a unified analytics engine for large-scale data processing.", "pullCount": "50M+", "stars": 1000 },
+      { "namespace": "clickhouse", "name": "clickhouse-server", "description": "ClickHouse is a fast open-source OLAP database management system.", "pullCount": "10M+", "stars": 800 },
+      { "namespace": "apache", "name": "hadoop", "description": "Apache Hadoop software library.", "pullCount": "5M+", "stars": 500 }
+    ]
+  },
+  {
+    "name": "Operating Systems",
+    "description": "Base operating system images for containers.",
+    "iconName": "Computer",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "ubuntu", "description": "Ubuntu is a Debian-based Linux operating system.", "pullCount": "1B+", "stars": 16000 },
+      { "namespace": "library", "name": "alpine", "description": "A minimal Docker image based on Alpine Linux.", "pullCount": "1B+", "stars": 10000 },
+      { "namespace": "library", "name": "debian", "description": "Debian is a Linux distribution.", "pullCount": "1B+", "stars": 5000 },
+      { "namespace": "library", "name": "centos", "description": "The official build of CentOS.", "pullCount": "1B+", "stars": 7000 },
+      { "namespace": "library", "name": "busybox", "description": "Busybox base image.", "pullCount": "1B+", "stars": 3000 }
+    ]
+  },
+  {
+    "name": "Message Brokers",
+    "description": "Event streaming and message queue platforms.",
+    "iconName": "Mail",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "rabbitmq", "description": "RabbitMQ is an open source multi-protocol messaging broker.", "pullCount": "1B+", "stars": 5000 },
+      { "namespace": "confluentinc", "name": "cp-kafka", "description": "Confluent Platform Kafka.", "pullCount": "100M+", "stars": 2000 },
+      { "namespace": "bitnami", "name": "kafka", "description": "Bitnami Docker Image for Apache Kafka.", "pullCount": "100M+", "stars": 1500 },
+      { "namespace": "library", "name": "nats", "description": "NATS is a simple, secure and high performance open source messaging system.", "pullCount": "100M+", "stars": 1200 },
+      { "namespace": "apache", "name": "pulsar", "description": "Apache Pulsar is a cloud-native, distributed messaging and streaming platform.", "pullCount": "10M+", "stars": 500 }
+    ]
+  },
+  {
+    "name": "Networking",
+    "description": "Networking utilities and VPN solutions.",
+    "iconName": "Router",
+    "isSystem": true,
+    "images": [
+      { "namespace": "pihole", "name": "pihole", "description": "A black hole for Internet advertisements.", "pullCount": "500M+", "stars": 5000 },
+      { "namespace": "linuxserver", "name": "wireguard", "description": "WireGuard is a modern and fast VPN.", "pullCount": "100M+", "stars": 2000 },
+      { "namespace": "linuxserver", "name": "swag", "description": "Secure Web Application Gateway (Nginx/LetsEncrypt).", "pullCount": "50M+", "stars": 1500 },
+      { "namespace": "coredns", "name": "coredns", "description": "CoreDNS is a DNS server/forwarder.", "pullCount": "100M+", "stars": 1000 },
+      { "namespace": "containous", "name": "whoami", "description": "Tiny Go webserver that prints os information and HTTP request to output.", "pullCount": "50M+", "stars": 800 }
+    ]
+  },
+  {
+    "name": "Development Tools",
+    "description": "Languages, runtimes, and developer environments.",
+    "iconName": "Code",
+    "isSystem": true,
+    "images": [
+      { "namespace": "library", "name": "node", "description": "Node.js is a JavaScript-based platform for server-side and networking applications.", "pullCount": "1B+", "stars": 13000 },
+      { "namespace": "library", "name": "python", "description": "Python is an interpreted, interactive, object-oriented, open-source programming language.", "pullCount": "1B+", "stars": 8000 },
+      { "namespace": "library", "name": "golang", "description": "Go (golang) is a general purpose, higher-level, imperative programming language.", "pullCount": "1B+", "stars": 5000 },
+      { "namespace": "library", "name": "openjdk", "description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition.", "pullCount": "1B+", "stars": 4000 },
+      { "namespace": "library", "name": "ruby", "description": "Ruby is a dynamic, reflective, object-oriented, general-purpose programming language.", "pullCount": "500M+", "stars": 3000 }
+    ]
+  }
+]
