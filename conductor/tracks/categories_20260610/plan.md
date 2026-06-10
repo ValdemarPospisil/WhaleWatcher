@@ -7,9 +7,9 @@
 - [x] Task: Create System Categories JSON Asset b55eaba
     - [x] Sub-task: Generate JSON file with 10 categories and images.
     - [x] Sub-task: Place in `assets/` directory.
-- [ ] Task: Implement Database Pre-population logic (TDD)
-    - [ ] Sub-task: Write failing tests for initial pre-population logic.
-    - [ ] Sub-task: Implement JSON parsing and database insertion on first launch.
+- [x] Task: Implement Database Pre-population logic (TDD) ad76bb8
+    - [x] Sub-task: Write failing tests for initial pre-population logic.
+    - [x] Sub-task: Implement JSON parsing and database insertion on first launch.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Layer Updates & Pre-population' (Protocol in workflow.md)
 
 ## Phase 2: Home Page UI Updates
