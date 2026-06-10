@@ -38,5 +38,5 @@
 
 ---
 
-- [ ] **Track: Implement markdown rendering for the description field on the Image Detail page.**
+- [x] **Track: Implement markdown rendering for the description field on the Image Detail page.**
 *Link: [./tracks/markdown_description_20260610/](./tracks/markdown_description_20260610/)*
