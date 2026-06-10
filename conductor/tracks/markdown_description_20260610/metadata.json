@@ -1,0 +1,8 @@
+{
+  "track_id": "markdown_description_20260610",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-06-10T14:30:00Z",
+  "updated_at": "2026-06-10T14:30:00Z",
+  "description": "Implement markdown rendering for the description field on the Image Detail page."
+}

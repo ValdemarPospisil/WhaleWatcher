@@ -36,3 +36,7 @@
 - [~] **Track: Add predefined system categories to the app, populated on first launch via JSON asset.**
 *Link: [./tracks/categories_20260610/](./tracks/categories_20260610/)*
 
+---
+
+- [ ] **Track: Implement markdown rendering for the description field on the Image Detail page.**
+*Link: [./tracks/markdown_description_20260610/](./tracks/markdown_description_20260610/)*

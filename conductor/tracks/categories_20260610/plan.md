@@ -24,7 +24,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Home Page UI Updates' (Protocol in workflow.md)
 
 ## Phase 3: List Detail Screen Updates
-- [ ] Task: Update List Detail Screen UI (TDD)
-    - [ ] Sub-task: Write Compose UI tests for header description visibility.
-    - [ ] Sub-task: Implement header description UI and hide edit/delete actions for predefined categories.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: List Detail Screen Updates' (Protocol in workflow.md)
+- [x] Task: Update List Detail Screen UI (TDD)
+    - [x] Sub-task: Write Compose UI tests for header description visibility.
+    - [x] Sub-task: Implement header description UI and hide edit/delete actions for predefined categories.
+- [x] Task: Conductor - User Manual Verification 'Phase 3: List Detail Screen Updates' (Protocol in workflow.md)
