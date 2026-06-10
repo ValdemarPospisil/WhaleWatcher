@@ -10,7 +10,7 @@
 - [x] Task: Implement Database Pre-population logic (TDD) ad76bb8
     - [x] Sub-task: Write failing tests for initial pre-population logic.
     - [x] Sub-task: Implement JSON parsing and database insertion on first launch.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Layer Updates & Pre-population' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Data Layer Updates & Pre-population' (Protocol in workflow.md)
 
 ## Phase 2: Home Page UI Updates
 - [ ] Task: Update Home Page View Model (TDD)
