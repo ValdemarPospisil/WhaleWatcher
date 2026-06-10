@@ -9,6 +9,7 @@ import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 @Serializable
@@ -66,6 +67,15 @@ class DatabasePrepopulator @Inject constructor(
                     )
                 )
             }
+        }
+    }
+
+    suspend fun prepopulateIfNeeded() {
+        // Only run if we don't have any system categories yet.
+        val collections = collectionDao.getAllCollections().first()
+        val hasSystemCategories = collections.any { it.isSystem && !it.isFavorite }
+        if (!hasSystemCategories) {
+            prepopulate()
         }
     }
 }

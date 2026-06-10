@@ -2,6 +2,7 @@ package com.valdemar.whalewatcher.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.valdemar.whalewatcher.data.local.DatabasePrepopulator
 import com.valdemar.whalewatcher.data.local.entities.CollectionWithImages
 import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
 import com.valdemar.whalewatcher.data.repository.DockerImageRepository
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: DockerImageRepository
+    private val repository: DockerImageRepository,
+    private val prepopulator: DatabasePrepopulator
 ) : ViewModel() {
 
     private val _collectionsState = MutableStateFlow<List<CollectionWithImages>>(emptyList())
@@ -27,6 +29,7 @@ class HomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             repository.ensureFavoritesCollectionExists()
+            prepopulator.prepopulateIfNeeded()
             loadCollections()
         }
     }

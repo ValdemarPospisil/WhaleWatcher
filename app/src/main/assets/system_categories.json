@@ -9,7 +9,10 @@
       { "namespace": "library", "name": "mysql", "description": "MySQL is a widely used, open-source relational database management system.", "pullCount": "1B+", "stars": 14000 },
       { "namespace": "library", "name": "mongo", "description": "MongoDB document databases provide high availability and easy scalability.", "pullCount": "1B+", "stars": 10000 },
       { "namespace": "library", "name": "redis", "description": "Redis is an open source key-value store.", "pullCount": "1B+", "stars": 13000 },
-      { "namespace": "library", "name": "mariadb", "description": "MariaDB is a community-developed fork of MySQL.", "pullCount": "1B+", "stars": 5000 }
+      { "namespace": "library", "name": "mariadb", "description": "MariaDB is a community-developed fork of MySQL.", "pullCount": "1B+", "stars": 5000 },
+      { "namespace": "library", "name": "cassandra", "description": "Apache Cassandra is a highly scalable, eventually consistent, distributed, structured key-value store.", "pullCount": "100M+", "stars": 4000 },
+      { "namespace": "library", "name": "couchbase", "description": "Couchbase is a distributed NoSQL document database.", "pullCount": "50M+", "stars": 1500 },
+      { "namespace": "library", "name": "influxdb", "description": "Scalable datastore for metrics, events, and real-time analytics.", "pullCount": "100M+", "stars": 3000 }
     ]
   },
   {
@@ -22,7 +25,9 @@
       { "namespace": "library", "name": "httpd", "description": "The Apache HTTP Server Project.", "pullCount": "1B+", "stars": 4500 },
       { "namespace": "library", "name": "traefik", "description": "Traefik is a modern HTTP reverse proxy and load balancer.", "pullCount": "1B+", "stars": 3500 },
       { "namespace": "library", "name": "haproxy", "description": "Reliable, high performance TCP/HTTP load balancer.", "pullCount": "500M+", "stars": 2000 },
-      { "namespace": "library", "name": "caddy", "description": "Fast, multi-platform web server with automatic HTTPS.", "pullCount": "100M+", "stars": 1500 }
+      { "namespace": "library", "name": "caddy", "description": "Fast, multi-platform web server with automatic HTTPS.", "pullCount": "100M+", "stars": 1500 },
+      { "namespace": "library", "name": "tomcat", "description": "Apache Tomcat is an open source implementation of the Java Servlet.", "pullCount": "500M+", "stars": 3500 },
+      { "namespace": "library", "name": "ghost", "description": "Ghost is a free and open source blogging platform.", "pullCount": "50M+", "stars": 2000 }
     ]
   },
   {
@@ -35,7 +40,8 @@
       { "namespace": "gitlab", "name": "gitlab-ce", "description": "GitLab Community Edition docker image.", "pullCount": "50M+", "stars": 4000 },
       { "namespace": "gitea", "name": "gitea", "description": "Git with a cup of tea, painless self-hosted git service.", "pullCount": "100M+", "stars": 3000 },
       { "namespace": "drone", "name": "drone", "description": "Drone is a Continuous Delivery system built on container technology.", "pullCount": "50M+", "stars": 1500 },
-      { "namespace": "library", "name": "sonarqube", "description": "SonarQube is an open-source platform for continuous inspection of code quality.", "pullCount": "500M+", "stars": 3500 }
+      { "namespace": "library", "name": "sonarqube", "description": "SonarQube is an open-source platform for continuous inspection of code quality.", "pullCount": "500M+", "stars": 3500 },
+      { "namespace": "woodpeckerci", "name": "woodpecker-server", "description": "Woodpecker is a simple CI engine with great extensibility.", "pullCount": "5M+", "stars": 800 }
     ]
   },
   {
@@ -47,8 +53,9 @@
       { "namespace": "prom", "name": "prometheus", "description": "The Prometheus monitoring system and time series database.", "pullCount": "500M+", "stars": 5000 },
       { "namespace": "grafana", "name": "grafana", "description": "The open and composable observability and data visualization platform.", "pullCount": "500M+", "stars": 6000 },
       { "namespace": "library", "name": "telegraf", "description": "The plugin-driven server agent for collecting & reporting metrics.", "pullCount": "500M+", "stars": 2000 },
-      { "namespace": "library", "name": "influxdb", "description": "Scalable datastore for metrics, events, and real-time analytics.", "pullCount": "100M+", "stars": 3000 },
-      { "namespace": "elastic", "name": "kibana", "description": "Kibana is your window into the Elastic Stack.", "pullCount": "100M+", "stars": 2500 }
+      { "namespace": "elastic", "name": "kibana", "description": "Kibana is your window into the Elastic Stack.", "pullCount": "100M+", "stars": 2500 },
+      { "namespace": "datadog", "name": "agent", "description": "Datadog Agent.", "pullCount": "500M+", "stars": 1000 },
+      { "namespace": "netdata", "name": "netdata", "description": "Netdata is a highly optimized Linux daemon providing real-time performance monitoring.", "pullCount": "50M+", "stars": 2000 }
     ]
   },
   {
@@ -74,7 +81,8 @@
       { "namespace": "library", "name": "logstash", "description": "Logstash is a free and open server-side data processing pipeline.", "pullCount": "100M+", "stars": 3000 },
       { "namespace": "bitnami", "name": "spark", "description": "Apache Spark is a unified analytics engine for large-scale data processing.", "pullCount": "50M+", "stars": 1000 },
       { "namespace": "clickhouse", "name": "clickhouse-server", "description": "ClickHouse is a fast open-source OLAP database management system.", "pullCount": "10M+", "stars": 800 },
-      { "namespace": "apache", "name": "hadoop", "description": "Apache Hadoop software library.", "pullCount": "5M+", "stars": 500 }
+      { "namespace": "apache", "name": "hadoop", "description": "Apache Hadoop software library.", "pullCount": "5M+", "stars": 500 },
+      { "namespace": "metabase", "name": "metabase", "description": "The simplest, fastest way to get business intelligence and analytics to everyone in your company.", "pullCount": "50M+", "stars": 2000 }
     ]
   },
   {
@@ -87,7 +95,9 @@
       { "namespace": "library", "name": "alpine", "description": "A minimal Docker image based on Alpine Linux.", "pullCount": "1B+", "stars": 10000 },
       { "namespace": "library", "name": "debian", "description": "Debian is a Linux distribution.", "pullCount": "1B+", "stars": 5000 },
       { "namespace": "library", "name": "centos", "description": "The official build of CentOS.", "pullCount": "1B+", "stars": 7000 },
-      { "namespace": "library", "name": "busybox", "description": "Busybox base image.", "pullCount": "1B+", "stars": 3000 }
+      { "namespace": "library", "name": "busybox", "description": "Busybox base image.", "pullCount": "1B+", "stars": 3000 },
+      { "namespace": "library", "name": "fedora", "description": "Official Fedora base image.", "pullCount": "100M+", "stars": 1500 },
+      { "namespace": "linuxserver", "name": "webtop", "description": "Alpine, Ubuntu, Fedora, and Arch based Webtop images.", "pullCount": "50M+", "stars": 2000 }
     ]
   },
   {
@@ -113,7 +123,8 @@
       { "namespace": "linuxserver", "name": "wireguard", "description": "WireGuard is a modern and fast VPN.", "pullCount": "100M+", "stars": 2000 },
       { "namespace": "linuxserver", "name": "swag", "description": "Secure Web Application Gateway (Nginx/LetsEncrypt).", "pullCount": "50M+", "stars": 1500 },
       { "namespace": "coredns", "name": "coredns", "description": "CoreDNS is a DNS server/forwarder.", "pullCount": "100M+", "stars": 1000 },
-      { "namespace": "containous", "name": "whoami", "description": "Tiny Go webserver that prints os information and HTTP request to output.", "pullCount": "50M+", "stars": 800 }
+      { "namespace": "containous", "name": "whoami", "description": "Tiny Go webserver that prints os information and HTTP request to output.", "pullCount": "50M+", "stars": 800 },
+      { "namespace": "jc21", "name": "nginx-proxy-manager", "description": "Docker container for managing Nginx proxy hosts with a simple, powerful interface.", "pullCount": "100M+", "stars": 4000 }
     ]
   },
   {
@@ -126,7 +137,43 @@
       { "namespace": "library", "name": "python", "description": "Python is an interpreted, interactive, object-oriented, open-source programming language.", "pullCount": "1B+", "stars": 8000 },
       { "namespace": "library", "name": "golang", "description": "Go (golang) is a general purpose, higher-level, imperative programming language.", "pullCount": "1B+", "stars": 5000 },
       { "namespace": "library", "name": "openjdk", "description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition.", "pullCount": "1B+", "stars": 4000 },
-      { "namespace": "library", "name": "ruby", "description": "Ruby is a dynamic, reflective, object-oriented, general-purpose programming language.", "pullCount": "500M+", "stars": 3000 }
+      { "namespace": "library", "name": "ruby", "description": "Ruby is a dynamic, reflective, object-oriented, general-purpose programming language.", "pullCount": "500M+", "stars": 3000 },
+      { "namespace": "library", "name": "rust", "description": "Rust is a systems programming language that runs blazingly fast.", "pullCount": "100M+", "stars": 2000 },
+      { "namespace": "library", "name": "php", "description": "While designed for web development, the PHP scripting language also provides general-purpose use.", "pullCount": "1B+", "stars": 8000 }
+    ]
+  },
+  {
+    "name": "Homelab",
+    "description": "Self-hosted media, automation, and arr stack apps.",
+    "iconName": "Home",
+    "isSystem": true,
+    "images": [
+      { "namespace": "linuxserver", "name": "plex", "description": "Plex Media Server.", "pullCount": "1B+", "stars": 5000 },
+      { "namespace": "linuxserver", "name": "jellyfin", "description": "The Free Software Media System.", "pullCount": "100M+", "stars": 3500 },
+      { "namespace": "advplyr", "name": "audiobookshelf", "description": "Self-hosted audiobook and podcast server.", "pullCount": "10M+", "stars": 1500 },
+      { "namespace": "linuxserver", "name": "radarr", "description": "A fork of Sonarr to work with movies.", "pullCount": "500M+", "stars": 2000 },
+      { "namespace": "linuxserver", "name": "sonarr", "description": "Smart PVR for newsgroup and bittorrent users.", "pullCount": "500M+", "stars": 2500 },
+      { "namespace": "linuxserver", "name": "lidarr", "description": "Looks and smells like Sonarr but made for music.", "pullCount": "100M+", "stars": 1000 },
+      { "namespace": "linuxserver", "name": "prowlarr", "description": "Prowlarr is an indexer manager/proxy built on the popular arr .net/reactjs base stack.", "pullCount": "50M+", "stars": 1500 },
+      { "namespace": "homeassistant", "name": "home-assistant", "description": "Open source home automation that puts local control and privacy first.", "pullCount": "1B+", "stars": 8000 },
+      { "namespace": "nextcloud", "name": "nextcloud", "description": "A safe home for all your data.", "pullCount": "500M+", "stars": 5000 },
+      { "namespace": "portainer", "name": "portainer-ce", "description": "Portainer Community Edition, a lightweight service delivery platform for containerized applications.", "pullCount": "1B+", "stars": 7000 },
+      { "namespace": "linuxserver", "name": "qbittorrent", "description": "qBittorrent is a bittorrent client programmed in C++ / Qt.", "pullCount": "500M+", "stars": 3000 }
+    ]
+  },
+  {
+    "name": "AI & Machine Learning",
+    "description": "LLMs, notebooks, and ML tooling.",
+    "iconName": "Memory",
+    "isSystem": true,
+    "images": [
+      { "namespace": "ollama", "name": "ollama", "description": "Get up and running with Llama 3, Mistral, Gemma, and other large language models.", "pullCount": "50M+", "stars": 4500 },
+      { "namespace": "jupyter", "name": "datascience-notebook", "description": "Data Science Jupyter Notebook Python, Julia, R.", "pullCount": "10M+", "stars": 2500 },
+      { "namespace": "tensorflow", "name": "tensorflow", "description": "Official Docker images for the machine learning framework TensorFlow.", "pullCount": "50M+", "stars": 4000 },
+      { "namespace": "huggingface", "name": "transformers-pytorch-gpu", "description": "Hugging Face Transformers.", "pullCount": "5M+", "stars": 1000 },
+      { "namespace": "pytorch", "name": "pytorch", "description": "PyTorch Docker Image.", "pullCount": "50M+", "stars": 2000 },
+      { "namespace": "nvidia", "name": "cuda", "description": "CUDA and cuDNN images from NVIDIA.", "pullCount": "100M+", "stars": 1500 },
+      { "namespace": "vllm", "name": "vllm-openai", "description": "A high-throughput and memory-efficient LLM serving engine.", "pullCount": "1M+", "stars": 500 }
     ]
   }
 ]

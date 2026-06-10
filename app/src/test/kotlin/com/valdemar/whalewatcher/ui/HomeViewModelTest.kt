@@ -23,12 +23,14 @@ class HomeViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var repository: DockerImageRepository
+    private lateinit var prepopulator: com.valdemar.whalewatcher.data.local.DatabasePrepopulator
     private lateinit var viewModel: HomeViewModel
 
     @Before
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         repository = mockk()
+        prepopulator = mockk(relaxed = true)
 
         val mockCollections = listOf(
             CollectionWithImages(CollectionEntity(1, "Favorites", "Fav", "Heart", isSystem = true, isFavorite = true), emptyList()),
@@ -39,7 +41,7 @@ class HomeViewModelTest {
         coEvery { repository.getAllCollectionsWithImages() } returns flowOf(mockCollections)
         coEvery { repository.ensureFavoritesCollectionExists() } returns Unit
 
-        viewModel = HomeViewModel(repository)
+        viewModel = HomeViewModel(repository, prepopulator)
     }
 
     @After

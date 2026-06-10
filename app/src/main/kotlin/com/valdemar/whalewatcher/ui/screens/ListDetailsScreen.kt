@@ -75,8 +75,57 @@ fun ListDetailsScreen(
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
+            collection?.let { coll ->
+                if (coll.isSystem) {
+                    androidx.compose.material3.ElevatedCard(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        colors = androidx.compose.material3.CardDefaults.elevatedCardColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer
+                        )
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(16.dp)
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                androidx.compose.material3.Icon(
+                                    imageVector = com.valdemar.whalewatcher.ui.screens.getIconForName(coll.iconName),
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSecondaryContainer
+                                )
+                                Text(
+                                    text = coll.name,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                androidx.compose.foundation.layout.Spacer(modifier = Modifier.weight(1f))
+                                androidx.compose.material3.Badge(
+                                    containerColor = MaterialTheme.colorScheme.primary,
+                                    contentColor = MaterialTheme.colorScheme.onPrimary
+                                ) {
+                                    Text("Read-Only", modifier = Modifier.padding(horizontal = 4.dp))
+                                }
+                            }
+                            if (coll.description.isNotEmpty()) {
+                                androidx.compose.foundation.layout.Spacer(modifier = Modifier.padding(4.dp))
+                                Text(
+                                    text = coll.description,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             if (images.isEmpty()) {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Box(modifier = Modifier.fillMaxSize().weight(1f), contentAlignment = Alignment.Center) {
                     Text(
                         text = "No images found in this collection.",
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -84,8 +133,14 @@ fun ListDetailsScreen(
                 }
             } else {
                 LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(
+                        start = 16.dp, 
+                        end = 16.dp, 
+                        top = if (collection?.isSystem == true) 0.dp else 16.dp, 
+                        bottom = 16.dp
+                    ),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.weight(1f)
                 ) {
                     items(images) { image ->
                         Row(modifier = Modifier.fillMaxWidth()) {
