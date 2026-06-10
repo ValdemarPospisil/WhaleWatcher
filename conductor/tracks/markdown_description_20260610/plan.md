@@ -9,8 +9,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Markdown Rendering Setup' (Protocol in workflow.md) 2a701c8
 
 ## Phase 2: Image Detail UI Updates
-- [~] Task: Update Image Detail Screen (TDD)
-    - [ ] Sub-task: Write UI tests to verify the horizontal divider and markdown rendering in the "Info" tab.
-    - [ ] Sub-task: Modify `ImageDetailScreen.kt` to replace the raw text description with the new markdown component.
-    - [ ] Sub-task: Add a Material `HorizontalDivider` below the "Description" section title.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Image Detail UI Updates' (Protocol in workflow.md)
+- [x] Task: Update Image Detail Screen (TDD) 89caa6c
+    - [x] Sub-task: Write UI tests to verify the horizontal divider and markdown rendering in the "Info" tab.
+    - [x] Sub-task: Modify `ImageDetailScreen.kt` to replace the raw text description with the new markdown component.
+    - [x] Sub-task: Add a Material `HorizontalDivider` below the "Description" section title.
+- [~] Task: Conductor - User Manual Verification 'Phase 2: Image Detail UI Updates' (Protocol in workflow.md)
