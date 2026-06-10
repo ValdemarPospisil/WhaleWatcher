@@ -87,6 +87,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     implementation(libs.activity.compose)
     implementation(libs.navigation.compose)
+    implementation("com.github.jeziellago:compose-markdown:0.5.0")
 
     debugImplementation(libs.compose.ui.tooling)
 
