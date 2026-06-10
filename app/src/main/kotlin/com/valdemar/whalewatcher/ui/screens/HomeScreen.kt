@@ -24,9 +24,23 @@ import com.valdemar.whalewatcher.ui.components.ImageCard
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.valdemar.whalewatcher.data.local.entities.CollectionEntity
 import com.valdemar.whalewatcher.data.local.entities.CollectionWithImages
 import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
 import com.valdemar.whalewatcher.ui.HomeViewModel
+
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 
 @Composable
 fun HomeScreen(
@@ -35,52 +49,108 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val collectionsWithImages by viewModel.collectionsState.collectAsState()
+    val systemCategories by viewModel.systemCategoriesState.collectAsState()
 
     val favorites = collectionsWithImages.firstOrNull { it.collection.isFavorite }
-    val systemCategories = collectionsWithImages.filter { it.collection.isSystem && !it.collection.isFavorite }
 
-    LazyColumn(
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(vertical = 16.dp),
+        contentPadding = PaddingValues(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // App Header
-        item {
+        item(span = { GridItemSpan(maxLineSpan) }) {
             Text(
                 text = "WhaleWatcher",
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                modifier = Modifier.padding(bottom = 8.dp),
             )
-            Spacer(modifier = Modifier.height(16.dp))
         }
 
         // Favorites Row
         if (favorites != null && favorites.images.isNotEmpty()) {
-            item {
+            item(span = { GridItemSpan(maxLineSpan) }) {
                 CategoryRow(
                     collectionWithImages = favorites,
                     onViewAllClick = { onNavigateToList(favorites.collection.id) },
                     onImageClick = onNavigateToImage,
                     onFavoriteClick = { viewModel.toggleFavorite(it) }
                 )
-                Spacer(modifier = Modifier.height(24.dp))
             }
         }
 
-        // System Categories
+        // Categories Header
+        item(span = { GridItemSpan(maxLineSpan) }) {
+            Text(
+                text = "Categories",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+            )
+        }
+
+        // Categories Grid
         items(systemCategories) { category ->
-            if (category.images.isNotEmpty()) {
-                CategoryRow(
-                    collectionWithImages = category,
-                    onViewAllClick = { onNavigateToList(category.collection.id) },
-                    onImageClick = onNavigateToImage,
-                    onFavoriteClick = { viewModel.toggleFavorite(it) }
-                )
-                Spacer(modifier = Modifier.height(24.dp))
-            }
+            CategoryGridItem(
+                category = category.collection,
+                onClick = { onNavigateToList(category.collection.id) }
+            )
         }
     }
+}
+
+@Composable
+fun CategoryGridItem(
+    category: CollectionEntity,
+    onClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(1f)
+            .clickable(onClick = onClick),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                imageVector = getIconForName(category.iconName),
+                contentDescription = category.name,
+                modifier = Modifier.size(48.dp),
+                tint = MaterialTheme.colorScheme.primary
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = category.name,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 8.dp)
+            )
+        }
+    }
+}
+
+fun getIconForName(iconName: String) = when (iconName) {
+    "Storage" -> Icons.Default.Storage
+    "Public" -> Icons.Default.Public
+    "Build" -> Icons.Default.Build
+    "Analytics" -> Icons.Default.Analytics
+    "Security" -> Icons.Default.Security
+    "Insights" -> Icons.Default.Insights
+    "Computer" -> Icons.Default.Computer
+    "Mail" -> Icons.Default.Mail
+    "Router" -> Icons.Default.Router
+    "Code" -> Icons.Default.Code
+    "Favorite" -> Icons.Default.Favorite
+    else -> Icons.Default.Folder
 }
 
 @Composable
@@ -93,8 +163,7 @@ fun CategoryRow(
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -114,7 +183,6 @@ fun CategoryRow(
         Spacer(modifier = Modifier.height(12.dp))
 
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(collectionWithImages.images) { image ->
