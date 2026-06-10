@@ -13,4 +13,4 @@
     - [x] Sub-task: Write UI tests to verify the horizontal divider and markdown rendering in the "Info" tab.
     - [x] Sub-task: Modify `ImageDetailScreen.kt` to replace the raw text description with the new markdown component.
     - [x] Sub-task: Add a Material `HorizontalDivider` below the "Description" section title.
-- [~] Task: Conductor - User Manual Verification 'Phase 2: Image Detail UI Updates' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Image Detail UI Updates' (Protocol in workflow.md) cc8314a
