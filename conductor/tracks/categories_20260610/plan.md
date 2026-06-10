@@ -4,9 +4,9 @@
 - [x] Task: Update Category/List Room Entity (TDD) 46e5415
     - [x] Sub-task: Write failing tests for category entity updates (description, iconName, isPredefined).
     - [x] Sub-task: Implement entity changes and Room database migrations.
-- [ ] Task: Create System Categories JSON Asset
-    - [ ] Sub-task: Generate JSON file with 10 categories and images.
-    - [ ] Sub-task: Place in `assets/` directory.
+- [x] Task: Create System Categories JSON Asset b55eaba
+    - [x] Sub-task: Generate JSON file with 10 categories and images.
+    - [x] Sub-task: Place in `assets/` directory.
 - [ ] Task: Implement Database Pre-population logic (TDD)
     - [ ] Sub-task: Write failing tests for initial pre-population logic.
     - [ ] Sub-task: Implement JSON parsing and database insertion on first launch.
