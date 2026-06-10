@@ -13,7 +13,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Data Layer Updates & Pre-population' (Protocol in workflow.md)
 
 ## Phase 2: Home Page UI Updates
-- [ ] Task: Update Home Page View Model (TDD)
+- [~] Task: Update Home Page View Model (TDD)
     - [ ] Sub-task: Write failing tests for ViewModel fetching system categories.
     - [ ] Sub-task: Implement ViewModel data flow from Repository.
 - [ ] Task: Implement Home Page Grid UI (TDD)
