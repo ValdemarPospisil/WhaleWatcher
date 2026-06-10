@@ -13,9 +13,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Data Layer Updates & Pre-population' (Protocol in workflow.md)
 
 ## Phase 2: Home Page UI Updates
-- [~] Task: Update Home Page View Model (TDD)
-    - [ ] Sub-task: Write failing tests for ViewModel fetching system categories.
-    - [ ] Sub-task: Implement ViewModel data flow from Repository.
+- [x] Task: Update Home Page View Model (TDD) 1aaadd3
+    - [x] Sub-task: Write failing tests for ViewModel fetching system categories.
+    - [x] Sub-task: Implement ViewModel data flow from Repository.
 - [ ] Task: Implement Home Page Grid UI (TDD)
     - [ ] Sub-task: Add `material-icons-extended` dependency if needed.
     - [ ] Sub-task: Write Compose UI tests for the 2x5 grid of categories.
