@@ -16,10 +16,11 @@
 - [x] Task: Update Home Page View Model (TDD) 1aaadd3
     - [x] Sub-task: Write failing tests for ViewModel fetching system categories.
     - [x] Sub-task: Implement ViewModel data flow from Repository.
-- [ ] Task: Implement Home Page Grid UI (TDD)
-    - [ ] Sub-task: Add `material-icons-extended` dependency if needed.
-    - [ ] Sub-task: Write Compose UI tests for the 2x5 grid of categories.
-    - [ ] Sub-task: Implement the Composable Grid UI with category icons.
+- [x] Task: Implement Home Page Grid UI (TDD) 8d35e23
+    - [x] Sub-task: Add `material-icons-extended` dependency if needed.
+    - [x] Sub-task: Write Compose UI tests for the 2x5 grid of categories.
+    - [x] Sub-task: Update `HomeScreen.kt` to use LazyVerticalGrid for system categories.
+    - [x] Sub-task: Create CategoryItem Composable.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Home Page UI Updates' (Protocol in workflow.md)
 
 ## Phase 3: List Detail Screen Updates
