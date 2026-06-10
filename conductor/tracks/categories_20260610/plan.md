@@ -1,9 +1,9 @@
 # Implementation Plan: Predefined System Categories
 
 ## Phase 1: Data Layer Updates & Pre-population
-- [ ] Task: Update Category/List Room Entity (TDD)
-    - [ ] Sub-task: Write failing tests for category entity updates (description, iconName, isPredefined).
-    - [ ] Sub-task: Implement entity changes and Room database migrations.
+- [x] Task: Update Category/List Room Entity (TDD) 46e5415
+    - [x] Sub-task: Write failing tests for category entity updates (description, iconName, isPredefined).
+    - [x] Sub-task: Implement entity changes and Room database migrations.
 - [ ] Task: Create System Categories JSON Asset
     - [ ] Sub-task: Generate JSON file with 10 categories and images.
     - [ ] Sub-task: Place in `assets/` directory.

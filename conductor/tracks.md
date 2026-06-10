@@ -33,6 +33,6 @@
 
 ---
 
-- [ ] **Track: Add predefined system categories to the app, populated on first launch via JSON asset.**
+- [~] **Track: Add predefined system categories to the app, populated on first launch via JSON asset.**
 *Link: [./tracks/categories_20260610/](./tracks/categories_20260610/)*
 
