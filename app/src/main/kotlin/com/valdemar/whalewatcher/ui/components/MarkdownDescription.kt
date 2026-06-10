@@ -8,18 +8,6 @@ import dev.jeziellago.compose.markdowntext.MarkdownText
 
 @Composable
 fun MarkdownDescription(markdown: String, modifier: Modifier = Modifier) {
-    // MarkdownText from jeziellago/compose-markdown doesn't have an easy way to override specific heading styles
-    // via its API. Instead of complex overrides, wait, let's look at MarkdownText.
-    // compose-markdown uses coil internally or text styles. But wait, `MarkdownText` has a `style` parameter.
-    // Actually, according to compose-markdown, headings are hardcoded in Markwon or rendered natively.
-    // The easiest way to downscale is to literally replace the markdown headings in the raw text, OR
-    // wait, we can just replace "# " with "### " in the text if we want to scale them down, but that's hacky.
-    // Is there a MarkdownText configuration for Typography? Let's check.
-    
-    // For now, since Markwon/compose-markdown uses the `style` parameter for body, 
-    // downscaling headings can be done by preprocessing the text to increase the heading level by 2.
-    // e.g. H1 (#) -> H3 (###), H2 (##) -> H4 (####) etc.
-    // This perfectly matches "H1 behaves like H3, H2 behaves like H4"
     val downscaledMarkdown = scaleDownHeadings(markdown)
 
     MarkdownText(
