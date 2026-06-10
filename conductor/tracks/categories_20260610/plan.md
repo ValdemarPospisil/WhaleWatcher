@@ -21,7 +21,7 @@
     - [x] Sub-task: Write Compose UI tests for the 2x5 grid of categories.
     - [x] Sub-task: Update `HomeScreen.kt` to use LazyVerticalGrid for system categories.
     - [x] Sub-task: Create CategoryItem Composable.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Home Page UI Updates' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Home Page UI Updates' (Protocol in workflow.md)
 
 ## Phase 3: List Detail Screen Updates
 - [ ] Task: Update List Detail Screen UI (TDD)
