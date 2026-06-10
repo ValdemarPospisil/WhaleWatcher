@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.launch
 import javax.inject.Singleton
 
 @Module
@@ -19,13 +20,21 @@ object DatabaseModule {
     @Singleton
     fun provideAppDatabase(
         @ApplicationContext context: Context,
+        prepopulatorProvider: javax.inject.Provider<com.valdemar.whalewatcher.data.local.DatabasePrepopulator>
     ): AppDatabase {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java,
             AppDatabase.DATABASE_NAME,
         )
-            .addCallback(AppDatabase.PrepopulateCallback())
+            .addCallback(object : androidx.room.RoomDatabase.Callback() {
+                override fun onCreate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                    super.onCreate(db)
+                    kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+                        prepopulatorProvider.get().prepopulate()
+                    }
+                }
+            })
             .fallbackToDestructiveMigration()
             .build()
     }
