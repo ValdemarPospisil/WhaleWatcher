@@ -21,6 +21,9 @@ class HomeViewModel @Inject constructor(
     private val _collectionsState = MutableStateFlow<List<CollectionWithImages>>(emptyList())
     val collectionsState: StateFlow<List<CollectionWithImages>> = _collectionsState.asStateFlow()
 
+    private val _systemCategoriesState = MutableStateFlow<List<CollectionWithImages>>(emptyList())
+    val systemCategoriesState: StateFlow<List<CollectionWithImages>> = _systemCategoriesState.asStateFlow()
+
     init {
         viewModelScope.launch {
             repository.ensureFavoritesCollectionExists()
@@ -36,6 +39,7 @@ class HomeViewModel @Inject constructor(
                 }
                 .collect { collections ->
                     _collectionsState.value = collections
+                    _systemCategoriesState.value = collections.filter { it.collection.isSystem && !it.collection.isFavorite }
                 }
         }
     }
