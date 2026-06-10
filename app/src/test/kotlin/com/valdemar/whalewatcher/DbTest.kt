@@ -23,12 +23,18 @@ class DbTest {
     private lateinit var repository: DockerImageRepository
 
     @Before
-    fun createDb() {
+    fun createDb() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
-            .addCallback(AppDatabase.PrepopulateCallback())
             .allowMainThreadQueries()
             .build()
+            
+        com.valdemar.whalewatcher.data.local.DatabasePrepopulator(
+            context,
+            db.collectionDao(),
+            db.imageDao()
+        ).prepopulate()
+        
         // Mock api
         val api = object : DockerHubApi {
             override suspend fun searchRepositories(query: String, page: Int?) = TODO()

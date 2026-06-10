@@ -33,6 +33,7 @@ class CollectionsViewModelTest {
             CollectionEntity(2, "My List", "Desc", "List", false, false)
         )
         coEvery { repository.getAllCollections() } returns flowOf(mockCollections)
+        coEvery { repository.ensureFavoritesCollectionExists() } returns Unit
         
         viewModel = CollectionsViewModel(repository)
     }
