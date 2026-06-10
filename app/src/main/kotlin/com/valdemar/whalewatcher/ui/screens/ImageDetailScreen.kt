@@ -65,7 +65,9 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 import com.valdemar.whalewatcher.ui.components.AddToCollectionBottomSheet
+import com.valdemar.whalewatcher.ui.components.MarkdownDescription
 import com.valdemar.whalewatcher.ui.CollectionsViewModel
+import androidx.compose.ui.platform.testTag
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -312,9 +314,14 @@ fun InfoTabContent(info: RepositoryInfo) {
         // Description
         Text("Description", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = info.fullDescription ?: info.description ?: "No description provided.",
-            style = MaterialTheme.typography.bodyMedium,
+        HorizontalDivider(
+            modifier = Modifier.testTag("DescriptionDivider"),
+            color = MaterialTheme.colorScheme.surfaceVariant
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        MarkdownDescription(
+            markdown = info.fullDescription ?: info.description ?: "No description provided.",
+            modifier = Modifier.testTag("MarkdownDescription")
         )
 
         // Add extra space at the bottom to ensure content isn't hidden behind the floating bar
