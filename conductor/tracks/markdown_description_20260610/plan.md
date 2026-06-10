@@ -3,10 +3,10 @@
 ## Phase 1: Markdown Rendering Setup
 - [x] Task: Add Dependencies 666cf69
     - [x] Sub-task: Add `jeziellago/compose-markdown` dependency to `app/build.gradle.kts`.
-- [~] Task: Implement Markdown Component (TDD)
-    - [ ] Sub-task: Write UI tests to verify a custom markdown component renders with smaller headings.
-    - [ ] Sub-task: Implement a custom Composable that uses `compose-markdown` with specific typography overrides (scaling down H1-H6).
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Markdown Rendering Setup' (Protocol in workflow.md)
+- [x] Task: Implement Markdown Component (TDD) 03e280e
+    - [x] Sub-task: Write UI tests to verify a custom markdown component renders with smaller headings.
+    - [x] Sub-task: Implement a custom Composable that uses `compose-markdown` with specific typography overrides (scaling down H1-H6).
+- [~] Task: Conductor - User Manual Verification 'Phase 1: Markdown Rendering Setup' (Protocol in workflow.md)
 
 ## Phase 2: Image Detail UI Updates
 - [ ] Task: Update Image Detail Screen (TDD)
