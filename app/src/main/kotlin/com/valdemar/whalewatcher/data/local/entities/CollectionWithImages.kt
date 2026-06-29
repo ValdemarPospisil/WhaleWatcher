@@ -8,11 +8,11 @@ data class CollectionWithImages(
     @Embedded val collection: CollectionEntity,
     @Relation(
         parentColumn = "id",
-        entityColumn = "name",
+        entityColumn = "id",
         associateBy = Junction(
             value = CollectionImageCrossRef::class,
             parentColumn = "collectionId",
-            entityColumn = "imageName"
+            entityColumn = "imageId"
         )
     )
     val images: List<DockerImageEntity>

@@ -15,7 +15,7 @@ import com.valdemar.whalewatcher.data.local.entities.DockerImageEntity
         CollectionEntity::class,
         CollectionImageCrossRef::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

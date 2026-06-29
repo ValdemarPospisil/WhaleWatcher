@@ -51,6 +51,7 @@ class DatabasePrepopulator @Inject constructor(
 
             for (img in category.images) {
                 val imageEntity = DockerImageEntity(
+                    id = "${img.namespace}/${img.name}",
                     namespace = img.namespace,
                     name = img.name,
                     description = img.description,
@@ -63,7 +64,7 @@ class DatabasePrepopulator @Inject constructor(
                 collectionDao.insertCollectionImageCrossRef(
                     CollectionImageCrossRef(
                         collectionId = collectionId,
-                        imageName = img.name
+                        imageId = "${img.namespace}/${img.name}"
                     )
                 )
             }

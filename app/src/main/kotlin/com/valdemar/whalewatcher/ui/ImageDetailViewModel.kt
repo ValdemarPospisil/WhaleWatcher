@@ -74,6 +74,7 @@ class ImageDetailViewModel
                 viewModelScope.launch {
                     val info = state.repositoryInfo
                     val image = DockerImageEntity(
+                        id = "${info.namespace}/${info.name}",
                         name = info.name,
                         namespace = info.namespace,
                         description = info.description ?: "",
@@ -94,6 +95,7 @@ class ImageDetailViewModel
                 viewModelScope.launch {
                     val info = state.repositoryInfo
                     val image = DockerImageEntity(
+                        id = "${info.namespace}/${info.name}",
                         name = info.name,
                         namespace = info.namespace,
                         description = info.description ?: "",

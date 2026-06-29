@@ -105,7 +105,7 @@ class DockerImageRepository @Inject constructor(
         ensureFavoritesCollectionExists()
         val favoritesCollection = collectionDao.getFavoritesCollection()
         if (favoritesCollection != null) {
-            val crossRef = CollectionImageCrossRef(favoritesCollection.id, image.name)
+            val crossRef = CollectionImageCrossRef(favoritesCollection.id, image.id)
             if (!isFav) {
                 // Was not favorite, now is favorite -> Add to collection
                 collectionDao.insertCollectionImageCrossRef(crossRef)
@@ -118,7 +118,7 @@ class DockerImageRepository @Inject constructor(
 
     suspend fun addImageToCollection(image: DockerImageEntity, collectionId: Long) {
         imageDao.insert(image)
-        val crossRef = CollectionImageCrossRef(collectionId, image.name)
+        val crossRef = CollectionImageCrossRef(collectionId, image.id)
         collectionDao.insertCollectionImageCrossRef(crossRef)
     }
 

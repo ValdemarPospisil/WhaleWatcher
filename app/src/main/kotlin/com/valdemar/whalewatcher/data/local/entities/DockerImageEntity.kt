@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "docker_images")
 data class DockerImageEntity(
-    // e.g. "library/nginx" or just "nginx" depending on API
     @PrimaryKey
+    @ColumnInfo(name = "id")
+    val id: String,
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "namespace")

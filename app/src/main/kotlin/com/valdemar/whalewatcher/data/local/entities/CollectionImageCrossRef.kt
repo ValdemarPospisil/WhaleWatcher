@@ -5,10 +5,10 @@ import androidx.room.Index
 
 @Entity(
     tableName = "collection_image_cross_ref",
-    primaryKeys = ["collectionId", "imageName"],
-    indices = [Index(value = ["imageName"])]
+    primaryKeys = ["collectionId", "imageId"],
+    indices = [Index(value = ["imageId"])]
 )
 data class CollectionImageCrossRef(
     val collectionId: Long,
-    val imageName: String
+    val imageId: String
 )
