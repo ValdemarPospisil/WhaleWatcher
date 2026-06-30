@@ -1,8 +1,0 @@
-{
-  "track_id": "collections_refactor_20260609",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-06-09T13:38:00Z",
-  "updated_at": "2026-06-09T13:38:00Z",
-  "description": "Implement a fully functional, database-persistent Collections (Library) and Favorites system, supporting custom collection creation (with a 12-20 icon selection), pre-populated system categories, and interactive favorite toggles and image saving bottom sheet."
-}
